@@ -1,0 +1,1 @@
+-- require('vim-rhubarb').setup()  -- initialise package after lazy loading

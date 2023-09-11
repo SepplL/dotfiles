@@ -1,0 +1,1 @@
+-- require('vim-fugitive').setup()  -- initialise package after lazy loading
