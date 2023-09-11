@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# This is the river configuration file
+# Note: 'Super' modifier is also known as Logo, GUI, Windows, Mod4
+#		'Alt' modifier is also known as Meta, Mod1
+#		'AltGr' modifier is also known as Mod5
+#		'Capslock' modifier is also known as Lock
+
+# start kitty terminal
+riverctl map normal Super+Control Return spawn kitty
+
+# exit river
+riverctl map normal Super+Control E exit
+
+# set more key bindings and setting
+# define mode for different groups of activities
+riverctl declare-mode launcher
+riverctl map normal Super D enter-mode launcher
+riverctl map launcher None F spawn firefox
+riverctl map launcher None T spawn kitty
+riverctl map launcher None R spawn "rofi -show drun"
+riverctl map launcher Shift R spawn "rofi -show run"
+riverctl map launcher None Escape enter-mode normal
+
+# WM moves and settings in all declared modes
+for mode in normal launcher
+do
+	# change focus window
+	riverctl map $mode Super J focus-view next
+	riverctl map $mode Super K focus-view previous
+	# swap focus window
+	riverctl map $mode Super+Shift J swap next
+	riverctl map $mode Super+Shift K swap previous
+	# get current window to top of stack
+	riverctl map $mode Super Return zoom
+	# Close the focused window
+	riverctl map $mode Super Q close
+done
+
+# rivertile settings in new mode
+riverctl declare-mode rivertile
+riverctl map normal Super R enter-mode rivertile
+riverctl map rivertile None Escape enter-mode normal
+# rivertile commands
+# main location
+riverctl map rivertile Super H send-layout-cmd rivertile "main-location left"
+riverctl map rivertile Super J send-layout-cmd rivertile "main-location bottom"
+riverctl map rivertile Super K send-layout-cmd rivertile "main-location top"
+riverctl map rivertile Super L send-layout-cmd rivertile "main-location right"
+
+# number of windows in main
+riverctl map rivertile Super+Shift K send-layout-cmd rivertile "main-count +1"
+riverctl map rivertile Super+Shift J send-layout-cmd rivertile "main-count -1"
+# set numerical value directly
+for i in $(seq 1 9)
+do
+	riverctl map rivertile Super+Alt $i send-layout-cmd rivertile "main-count $i"
+done
+
+# window size in main
+riverctl map rivertile Super+Shift H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map rivertile Super+Shift L send-layout-cmd rivertile "main-ratio +0.05"
+
+# floating settings
+# maybe later - for now focus on tiling
+
+# Tags / Workspaces - always available
+for mode in normal launcher rivertile
+do
+	for i in $(seq 1 9)
+	do
+		tagmask=$((1 << ($i - 1)))
+		riverctl map $mode Super				$i set-focused-tags		$tagmask
+		riverctl map $mode Super+Shift			$i set-view-tags		$tagmask
+		riverctl map $mode Super+Control		$i toggle-focused-tags	$tagmask
+		riverctl map $mode Super+Shift+Control	$i toggle-view-tags		$tagmask
+	done
+	all_tags_mask=$(((1 << 32) - 1))
+
+	riverctl map $mode Super		0 set-focused-tags	$all_tags_mask
+	riverctl map $mode Super+Shift	0 set-view-tags		$all_tags_mask
+done
+
+# set background and border color
+riverctl background-color 0x282a36
+riverctl border-color-focused 0xbd93f9
+riverctl border-color-unfocussed 0x69ff94
+riverctl border-width 3
+
+# set keyboard repeat rate
+riverctl set-repeat 50 300
+
+# Set the default layout generetor to be rivertile and start it
+# River will send the process group of the init executable SIGTERM on exit
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6 &
+
+# set initial tasks and programs
+# waybar
+riverctl spawn waybar
+# swaybg
+[[ -e ~/.config/river/wallpaper.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/wallpaper.png"
