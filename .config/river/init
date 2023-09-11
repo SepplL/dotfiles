@@ -98,5 +98,6 @@ rivertile -view-padding 6 -outer-padding 6 &
 # set initial tasks and programs
 # waybar
 riverctl spawn waybar
+riverctl spawn dunst
 # swaybg
 [[ -e ~/.config/river/wallpaper.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/wallpaper.png"
