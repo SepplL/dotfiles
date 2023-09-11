@@ -1,8 +1,8 @@
 # nvim-config
 My personal nvim config
-Rewritten on the basis of `kickstart.nvim`
 
-Works for nvim ≥ 0.7.2
-best with npm and proper terminal setup
+huge inspiration from lazy init
+Currently active with lazy-nvim in lua setup
+best working with proper NerdFont and symbols
 
-More settings to come
+Running in kitty/zsh setup
