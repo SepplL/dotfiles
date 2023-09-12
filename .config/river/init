@@ -95,6 +95,11 @@ riverctl set-repeat 50 300
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
+# set input devices to correct settings
+riverctl input Touchpad natural-scroll enabled
+riverctl input Touchpad disable-while-typing enabled 
+riverctl input Touchpad tap enabled
+
 # set initial tasks and programs
 # waybar
 riverctl spawn waybar
