@@ -34,5 +34,7 @@ format = "[$user]($style) on "
 style_user = "bold #8be9fd"
 
 [conda]
-# symbol = " "
 symbol = " "
+
+[python]
+symbol = " "
