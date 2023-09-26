@@ -116,6 +116,17 @@ riverctl map normal Mod4+Mod1+Shift   J resize vertical    100
 riverctl map normal Mod4+Mod1+Shift   K resize vertical   -100
 riverctl map normal Mod4+Mod1+Shift   L resize horizontal  100
 
+# Super+Period and Super+Comma to focus the next/previous output
+riverctl map normal Mod4 Period focus-output next
+riverctl map normal Mod4 Comma focus-output previous
+
+# Super+Shift+{Period,Comma} to send the focused view to the next/previous output
+riverctl map normal Mod4+Shift Period send-to-output next
+riverctl map normal Mod4+Shift Comma send-to-output previous
+
+# toggle full screen
+riverctl map normal Mod4 F toggle-fullscreen
+
 # set initial tasks and programs
 # waybar
 riverctl spawn waybar
