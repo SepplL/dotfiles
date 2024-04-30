@@ -129,7 +129,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-export PATH="$HOME/.local/texlive/2023/bin/x86_64-linux:$PATH"
+export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -139,20 +139,20 @@ eval "$(starship init zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/seppl/.local/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/seppl/.local/miniforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/seppl/.local/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/seppl/.local/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/home/seppl/.local/miniforge/etc/profile.d/conda.sh" ]; then
+        . "/home/seppl/.local/miniforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/seppl/.local/mambaforge/bin:$PATH"
+        export PATH="/home/seppl/.local/miniforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/seppl/.local/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/seppl/.local/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "/home/seppl/.local/miniforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/seppl/.local/miniforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 # mamba deactivate
