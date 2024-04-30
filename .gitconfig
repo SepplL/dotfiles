@@ -1,0 +1,7 @@
+[user]
+	email = sebastian.luetge@tu-dortmund.de
+	name = Sebastian Luetge
+[rebase]
+	stat = true
+[merge]
+	conflictstyle = diff3
