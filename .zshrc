@@ -121,7 +121,10 @@ alias lt='exa -aT --color=always --group-directories-first --icons'  # tree list
 alias l='exa -lah --color=always --group-directories-first --icons'  # tree listing
 
 alias open='imv '
+# include dotfiles repo for maintaining and saving configs
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+# include kitten to ssh - now showing screens correctly
+alias kssh="kitten ssh"
 
 # autoload -Uz compinit
 # compinit
