@@ -96,9 +96,9 @@ riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
 # set input devices to correct settings
-riverctl input pointer-1267-12312-ELAN0501:00_04F3:3018_Touchpad natural-scroll enabled
-riverctl input pointer-1267-12312-ELAN0501:00_04F3:3018_Touchpad disable-while-typing enabled 
-riverctl input pointer-1267-12312-ELAN0501:00_04F3:3018_Touchpad tap enabled
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad natural-scroll enabled
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad disable-while-typing enabled 
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad tap enabled
 
 # add river rule to make window floating (use for Show me the key)
 riverctl map normal Mod4 Space toggle-float

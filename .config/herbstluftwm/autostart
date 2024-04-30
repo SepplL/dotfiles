@@ -23,7 +23,7 @@ Mod=Mod4   # Use the super key as the main modifier
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Return spawn xfce4-terminal
+hc keybind $Mod-Return spawn kitty
 
 # runner - dmenu
 hc keybind $Mod-d spawn dmenu_run
@@ -157,7 +157,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 setxkbmap -model pc104 -layout us,de -option grp:alt_space_toggle
 
 # activate sciebo in background
-/net/el7/bin/sciebo-3.2.1.10371-x86_64.AppImage &
+# /net/el7/bin/sciebo-3.2.1.10371-x86_64.AppImage &
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
