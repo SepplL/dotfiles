@@ -74,6 +74,11 @@ window#waybar {
 		color: #282a36 ;
 		background-color: #bd93f9;
 }
+#battery {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #8be9fd;
+}
 #clock {
 		padding: 0 5px;
 		color: #282a36 ;

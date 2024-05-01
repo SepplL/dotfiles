@@ -1,1 +1,7 @@
 .dotfiles
+.local
+.cache
+.npm
+.oh-my-zsh
+.mozilla
+.thunderbird
