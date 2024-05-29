@@ -25,6 +25,7 @@ return {
           new_section("Recent files", [[lua require('fzf-lua').oldfiles()]], "FzF"),
           new_section("init.lua",     "e $MYVIMRC",           "Config"),
           new_section("Lazy",         "Lazy",                 "Config"),
+          new_section("CheckHealth",  "checkhealth",          "Config"),
           new_section("New file",     "ene | startinsert",    "Built-in"),
           new_section("Quit",         "qa",                   "Built-in"),
           -- new_section("Session restore", [[lua require("persistence").load()]], "Session"),

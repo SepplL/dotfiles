@@ -194,9 +194,9 @@ vim.o.termguicolors = true
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
-vim.o.syntax = true
+vim.o.syntax = "true"
 vim.o.autoindent = true
-vim.o.colorcolumn = 90
+vim.o.colorcolumn = "90"
 vim.o.laststatus = 2
 
 vim.o.tabstop = 4

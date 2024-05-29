@@ -1,7 +1,21 @@
 [user]
-	email = sebastian.luetge@tu-dortmund.de
 	name = Sebastian Luetge
+	email = sebastian.luetge@tu-dortmund.de
 [rebase]
 	stat = true
 [merge]
 	conflictstyle = diff3
+	tool = vimdiff
+[alias]
+	adog = log --all --decorate --oneline --graph
+# test kitten diff
+[diff]
+	tool = kitty
+	guitool = kitty.gui
+[difftool]
+	prompt = false
+	trustExitCode = true
+[difftool "kitty"]
+	cmd = kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+	cmd = kitten diff $LOCAL $REMOTE
