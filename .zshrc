@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-clear && eval $(ssh-agent -s) && neofetch #--ascii_distro arch
+# clear && eval $(ssh-agent -s) && neofetch #--ascii_distro arch
+eval $(ssh-agent -s)
 # clear && neofetch
 
 # Path to your oh-my-zsh installation.
