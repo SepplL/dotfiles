@@ -81,14 +81,14 @@ setopt hist_find_no_dups
 # Completion settings
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -al --color=always --group-directories-first --icons'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'exa -al --color=always --group-directories-first --icons'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
 
-alias ls='exa -al --color=always --group-directories-first --icons'  # preferred listing
-alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first --icons'  # long format
-alias lt='exa -aT --color=always --group-directories-first --icons'  # tree listing
-alias l='exa -lah --color=always --group-directories-first --icons'  # tree listing
+alias ls='eza -al --color=always --group-directories-first --icons'  # preferred listing
+alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --icons'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons'  # tree listing
+alias l='eza -lah --color=always --group-directories-first --icons'  # tree listing
 
 alias open='imv '
 # include dotfiles repo for maintaining and saving configs
