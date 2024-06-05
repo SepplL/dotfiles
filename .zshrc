@@ -35,17 +35,15 @@ zinit wait lucid light-mode for \
 #     zdharma-continuum/zinit-annex-rust \
 
 # old settings from OMZ
-zinit ice wait 1 lucid for \
-    zi snippet OMZP::git \
-    zi snippet OMZP::sudo \
-    zi snippet OMZP::command-not-found \
-    zi snippet OMZP::git-extras \
-    zi snippet OMZP::pylint \
-    zi snippet OMZP::python \
-    zi snippet OMZP::vim-interaction \
-    zi snippet OMZP::vagrant \
-
-    # zi snippet OMZL::git.zsh \
+zinit snippet OMZP::git
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::git-extras
+zinit snippet OMZP::pylint
+zinit snippet OMZP::python
+zinit snippet OMZP::vim-interaction
+zinit snippet OMZP::vagrant
 
 # fzf dracula color theme
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
