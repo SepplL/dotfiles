@@ -16,6 +16,7 @@ source ~/.zsh/key-bindings.zsh
 
 # start config here
 eval $(ssh-agent -s)
+eval "$(zoxide init zsh --cmd cd)"
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -83,15 +84,18 @@ setopt hist_find_no_dups
 
 # Completion settings
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' menu no
+
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
 
-alias ls='eza -al --color=always --group-directories-first --icons'  # preferred listing
-alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first --icons'  # long format
-alias lt='eza -aT --color=always --group-directories-first --icons'  # tree listing
-alias l='eza -lah --color=always --group-directories-first --icons'  # tree listing
+alias ls='eza -al --color=always --group-directories-first --icons auto'  # preferred listing
+alias la='eza -a --color=always --group-directories-first --icons auto'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --icons auto'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons auto'  # tree listing
+alias l='eza -lah --color=always --group-directories-first --icons auto'  # tree listing
 
 alias open='imv '
 # include dotfiles repo for maintaining and saving configs
@@ -107,8 +111,8 @@ export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
 export VISUAL=nvim
 export EDITOR=nvim
 
+# since system install - works as default
 # eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
