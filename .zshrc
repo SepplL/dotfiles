@@ -16,6 +16,8 @@ source ~/.zsh/key-bindings.zsh
 
 # start config here
 eval $(ssh-agent -s)
+# will work from version 0.48 onwards - wait for update
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
 # Load a few important annexes, without Turbo
@@ -110,9 +112,6 @@ export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
 
 export VISUAL=nvim
 export EDITOR=nvim
-
-# since system install - works as default
-# eval "$(fzf --zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
