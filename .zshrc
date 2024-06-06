@@ -11,22 +11,28 @@ fi
 # source/load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# keybindings for terminal scrolling
+source ~/.zsh/key-bindings.zsh
+
 # start config here
 eval $(ssh-agent -s)
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # turbo quick load all
-zinit wait lucid load for \
-    atinit"zicompinit; zicdreplay" \
-        zsh-users/zsh-syntax-highlighting \
-        redxtech/zsh-kitty \
-    atload"_zsh_autosuggest_start" \
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
 
+# old syntax highlighting - try faster startup
+# zsh-users/zsh-syntax-highlighting \
 zinit wait lucid light-mode for \
     Aloxaf/fzf-tab \
-    zsh-users/zsh-completions \
+    redxtech/zsh-kitty \
 
 # zinit wait lucid load for \
 #     zdharma-continuum/zinit-annex-as-monitor \
@@ -58,9 +64,6 @@ zinit light sindresorhus/pure
 #           atclone"./starship init zsh > init.zsh" \
 #           atpull"%atclone" src"init.zsh"
 # zinit light starship/starship
-
-# keybindings for terminal scrolling
-source ~/.zsh/key-bindings.zsh
 
 autoload -Uz compinit && compinit
 zinit cdreplay -q
