@@ -1,4 +1,5 @@
 # .bashrc
+eval $(ssh-agent -s)
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
