@@ -158,6 +158,15 @@ require("lazy").setup({
   { "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
+  { "lervag/vimtex",
+    init = function()
+      -- VimTeX config goes here
+      vim.g.vimtex_view_method = "zathura"
+    end
+  },
+  { "mitchpaulus/autocorrect.vim",
+    lazy = false,
+  },
 })
 -- stylua: ignore end
 
@@ -196,15 +205,12 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.syntax = "true"
 vim.o.autoindent = true
+vim.opt.smartindent = true
 vim.o.colorcolumn = "90"
 vim.o.laststatus = 2
 
 vim.o.tabstop = 4
-
--- set shortcut for disable highlighting noh
-vim.api.nvim_set_keymap( "n", "<esc><esc>", ":noh<cr>", {
-  noremap = true}
-)
+vim.opt.smarttab = true
 
 -- disable mouse
 vim.opt.mouse = ""
@@ -213,16 +219,11 @@ vim.opt.mouse = ""
 vim.o.foldlevel = 99
 vim.opt.linebreak = true
 vim.opt.textwidth = 90
-vim.opt.smarttab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.breakindent = true
-
-vim.opt.termguicolors = true
 
 require("additional")
 require("mappings")
 require("lsp-settings")
+require("spell-settings")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
