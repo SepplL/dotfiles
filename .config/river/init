@@ -16,10 +16,10 @@ riverctl map normal Super+Control E exit
 # define mode for different groups of activities
 riverctl declare-mode launcher
 riverctl map normal Super D enter-mode launcher
-riverctl map launcher None F spawn firefox
-riverctl map launcher None T spawn kitty
-riverctl map launcher None R spawn "rofi -show drun"
-riverctl map launcher Shift R spawn "rofi -show run"
+riverctl map launcher None F spawn "firefox & riverctl enter-mode normal"
+riverctl map launcher None T spawn "kitty & riverctl enter-mode normal"
+riverctl map launcher None R spawn "rofi -show drun & riverctl enter-mode normal"
+riverctl map launcher Shift R spawn "rofi -show run & riverctl enter-mode normal"
 riverctl map launcher None Escape enter-mode normal
 
 # WM moves and settings in all declared modes
@@ -133,4 +133,4 @@ riverctl map normal Mod4 F toggle-fullscreen
 riverctl spawn waybar
 riverctl spawn dunst
 # swaybg
-[[ -e ~/.config/river/wallpaper.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/wallpaper.png"
+[[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/dracula-soft-waves-44475a.png"

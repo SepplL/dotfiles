@@ -167,6 +167,12 @@ require("lazy").setup({
   { "mitchpaulus/autocorrect.vim",
     lazy = false,
   },
+  { "norcalli/nvim-colorizer.lua",
+    lazy = false,
+    config = function()
+      require("packages.colorizer");
+    end
+  },
 })
 -- stylua: ignore end
 

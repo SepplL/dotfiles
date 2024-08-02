@@ -24,13 +24,13 @@ window#waybar {
 }
 #tags button.occupied {
 		padding: 0 16px;
-		background-color: #bd93f9;
-		color: #f8f8f2;
+		background-color: #8be9fd;
+		color: #21222c;
 		font-weight: bold;
 }
 #tags button.focused {
 		padding: 0 16px;
-		background-color: #ff5555;
+		background-color: #bd93f9;
 		color: #f8f8f2;
 		font-weight: bold;
 }
