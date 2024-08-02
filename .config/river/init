@@ -96,6 +96,7 @@ riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
 # set input devices to correct settings
+# only works on thinkpad pointer currently. Other device needs adjustment ofc.
 riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad natural-scroll enabled
 riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad disable-while-typing enabled 
 riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad tap enabled
