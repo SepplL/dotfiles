@@ -210,7 +210,7 @@
     ### Misc/Advanced ###
 
     # rofi path.
-    rofi = /usr/bin/rofi -show run
+    # rofi = /usr/bin/rofi -show run
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/firefox -new-tab

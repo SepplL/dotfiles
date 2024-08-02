@@ -7,7 +7,7 @@
 #		'Capslock' modifier is also known as Lock
 
 # start kitty terminal
-riverctl map normal Super+Control Return spawn kitty
+riverctl map normal Super Return spawn kitty
 
 # exit river
 riverctl map normal Super+Control E exit
@@ -32,9 +32,9 @@ do
 	riverctl map $mode Super+Shift J swap next
 	riverctl map $mode Super+Shift K swap previous
 	# get current window to top of stack
-	riverctl map $mode Super Return zoom
+	riverctl map $mode Super+Shift Return zoom
 	# Close the focused window
-	riverctl map $mode Super Q close
+	riverctl map $mode Super+Control Q close
 done
 
 # rivertile settings in new mode
@@ -79,6 +79,7 @@ do
 
 	riverctl map $mode Super		0 set-focused-tags	$all_tags_mask
 	riverctl map $mode Super+Shift	0 set-view-tags		$all_tags_mask
+
 done
 
 # set background and border color
@@ -132,5 +133,16 @@ riverctl map normal Mod4 F toggle-fullscreen
 # waybar
 riverctl spawn waybar
 riverctl spawn dunst
+
+# lock on closed lid
+# rivertile input switch-0-5-Lid_Switch events enabled
+
+# swayidle for idle and locking management
+riverctl spawn "swayidle -w \
+	timeout 300 'swaylock -i ~/.config/swaylock/dracula-wallpaper.svg' \
+	timeout 600 'dunstify output off' \
+	resume 'dunstify output resumed' \
+	before-sleep 'swaylock -i ~/.config/swaylock/dracula-wallpaper.svg'	"
+
 # swaybg
 [[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/dracula-soft-waves-44475a.png"
