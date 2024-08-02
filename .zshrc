@@ -15,11 +15,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 source ~/.zsh/key-bindings.zsh
 
 # start config here
-eval $(ssh-agent -s)
-# will work from version 0.48 onwards - wait for update
-eval "$(fzf --zsh)"
-eval "$(zoxide init zsh --cmd cd)"
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # turbo quick load all
@@ -92,6 +87,7 @@ zstyle ':completion:*' menu no
 
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
+# zstyle ':fzf-tab:complete:micromamba:*' fzf-preview
 
 alias ls='eza -al --color=always --group-directories-first --icons auto'  # preferred listing
 alias la='eza -a --color=always --group-directories-first --icons auto'  # all files and dirs
@@ -104,6 +100,7 @@ alias open='imv '
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 # include kitten to ssh - now showing screens correctly
 alias kssh="kitten ssh"
+alias kdiff="kitten diff"
 
 # Completion for kitty
 # kitty + complete setup zsh | source /dev/stdin
@@ -129,3 +126,9 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+# eval $(ssh-agent -s)
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+# micromamba inclusion:
+eval "$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+# eval "$(micromamba shell hook)"
