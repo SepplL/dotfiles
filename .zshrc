@@ -126,7 +126,7 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-# eval $(ssh-agent -s)
+eval $(ssh-agent -s)
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 # micromamba inclusion:
