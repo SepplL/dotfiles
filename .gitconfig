@@ -4,7 +4,7 @@
 [rebase]
 	stat = true
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	tool = vimdiff
 [alias]
 	adog = log --all --decorate --oneline --graph
