@@ -16,7 +16,7 @@ riverctl map normal Super+Control E exit
 # define mode for different groups of activities
 riverctl declare-mode launcher
 riverctl map normal Super D enter-mode launcher
-riverctl map launcher None F spawn "firefox & riverctl enter-mode normal"
+riverctl map launcher None F spawn "flatpak run io.github.zen_browser.zen & riverctl enter-mode normal"
 riverctl map launcher None T spawn "kitty & riverctl enter-mode normal"
 riverctl map launcher None R spawn "rofi -show drun & riverctl enter-mode normal"
 riverctl map launcher Shift R spawn "rofi -show run & riverctl enter-mode normal"
