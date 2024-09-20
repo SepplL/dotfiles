@@ -37,13 +37,14 @@ require("lazy").setup({
     },
     -- enable = false,
   },
-  { "zbirenbaum/copilot.lua",                                                      -- AI code snippets
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup({})
-    end,
-  },
+  -- { "zbirenbaum/copilot.lua",                                                      -- AI code snippets
+  --   cmd = "Copilot",
+  --   config = function()
+  --     require("copilot").setup({})
+  --   end,
+  -- },
   { require("packages.starter") },                                                 -- define own starting screen
+  { require("packages.Ollama") },                                                 -- define Ollama setup
   { "rcarriga/nvim-notify",                                                        -- Fancy and beautiful notification system
     require("packages.notify"),
   },
@@ -138,7 +139,7 @@ require("lazy").setup({
     run = "./install --bin",
   },
   { "ibhagwan/fzf-lua",                                                            -- Fuzzy finder for lua
-    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },             -- popup for nice fzf looks     
+    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },             -- popup for nice fzf looks
     config = function()
       require("packages.FzfLua");
     end
@@ -159,14 +160,22 @@ require("lazy").setup({
     run = function() vim.fn["mkdp#util#install"]() end,
   },
   { "lervag/vimtex",
-    init = function()
-      -- VimTeX config goes here
-      vim.g.vimtex_view_method = "zathura"
-    end
+  lazy = false,     -- we don't want to lazy load VimTeX
+  -- tag = "v2.15", -- uncomment to pin to a specific release
+  init = function()
+    -- VimTeX configuration goes here, e.g.
+    vim.g.vimtex_view_method = "zathura"
+  end
   },
+  -- check spell checker and settle on a good version
   { "mitchpaulus/autocorrect.vim",
     lazy = false,
   },
+  -- { "https://git.sr.ht/~swaits/thethethe.nvim",
+  -- lazy = true,
+  -- event = "VeryLazy",
+  -- opts = { },
+  -- },
   { "norcalli/nvim-colorizer.lua",
     lazy = false,
     config = function()
@@ -211,12 +220,15 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.syntax = "true"
 vim.o.autoindent = true
-vim.opt.smartindent = true
 vim.o.colorcolumn = "90"
 vim.o.laststatus = 2
 
 vim.o.tabstop = 4
-vim.opt.smarttab = true
+
+-- set shortcut for disable highlighting noh
+vim.api.nvim_set_keymap( "n", "<esc><esc>", ":noh<cr>", {
+  noremap = true}
+)
 
 -- disable mouse
 vim.opt.mouse = ""
@@ -225,6 +237,12 @@ vim.opt.mouse = ""
 vim.o.foldlevel = 99
 vim.opt.linebreak = true
 vim.opt.textwidth = 90
+vim.opt.smarttab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.breakindent = true
+
+vim.opt.termguicolors = true
 
 require("additional")
 require("mappings")
