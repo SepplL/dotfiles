@@ -182,6 +182,7 @@ require("lazy").setup({
       require("packages.colorizer");
     end
   },
+  { "sindrets/diffview.nvim" },
 })
 -- stylua: ignore end
 
