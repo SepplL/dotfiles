@@ -15,20 +15,26 @@
 --   vim.keymap.set('n', '<leader>E', api.tree.open,   opts("open"))
 --   vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
 -- end
-
-require('nvim-tree').setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 35,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-  -- on_attach = my_on_attach,
-})
+--
+-- Use NerdTree
+return { "kyazdani42/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require('nvim-tree').setup({
+      sort_by = "case_sensitive",
+      view = {
+        width = 35,
+      },
+      renderer = {
+        group_empty = true,
+      },
+      filters = {
+        dotfiles = true,
+      },
+      -- on_attach = my_on_attach,
+    })
+  end
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

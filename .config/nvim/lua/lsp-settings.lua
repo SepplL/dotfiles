@@ -53,16 +53,16 @@ require('mason').setup()
 -- Enable the following language servers
 local servers = {
   'clangd',
-  'rust_analyzer',
   'pyright',
   'jedi_language_server',
   'pylsp',
   'lua_ls',
   'bashls',
-  'texlab',
   'cmake',
   'grammarly',
   'marksman',
+  'ltex-ls',
+  'zls',
 }
 
 -- Ensure the servers above are installed
@@ -116,7 +116,7 @@ require('lspconfig').jedi_language_server.setup {
   settings = {
     runtime = {
       -- path = "/net/el7/python/3.10.6.risselada/bin/python3",
-      path = "/usr/bin/python",
+      path = "$HOME/micromamba/envs/toolbox/bin/python",
     },
     initializationOptions = {
       codeAction = {

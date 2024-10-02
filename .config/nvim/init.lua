@@ -24,175 +24,70 @@ vim.opt.rtp:prepend( lazypath )
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-
 -- stylua: ignore start
 require("lazy").setup({
-  { "LazyVim/LazyVim",                                                             -- use this as inspiration for more packages
-    import = "lazyvim.plugins",
-    enabled = false,
-  },
-  { "mfussenegger/nvim-dap",                                                       -- debugging
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-    },
-    -- enable = false,
-  },
-  -- { "zbirenbaum/copilot.lua",                                                      -- AI code snippets
-  --   cmd = "Copilot",
-  --   config = function()
-  --     require("copilot").setup({})
-  --   end,
-  -- },
-  { require("packages.starter") },                                                 -- define own starting screen
-  { require("packages.Ollama") },                                                 -- define Ollama setup
-  { "rcarriga/nvim-notify",                                                        -- Fancy and beautiful notification system
-    require("packages.notify"),
-  },
-  { "stevearc/dressing.nvim",
-    opts = {},
-  },
-  { "echasnovski/mini.indentscope",
-    version = false,
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      -- symbol = "▏",
-      -- symbol = "│",
-      options = { try_as_border = true },
-    },
-  },
-  { "tpope/vim-fugitive",                                                          -- Git commands in nvim
-    config = function()
-      require("packages.fugitive");
-    end
-  },
-  { "tpope/vim-rhubarb",                                                           -- Fugitive-companion to interact with github
-    dependencies = { "tpope/vim-fugitive" },
-    config = function()
-      require("packages.rhubarb");
-    end
-  },
-  { "lewis6991/gitsigns.nvim",                                                     -- Add git related info in the signs columns and popups
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("packages.Gitsigns");
-    end
-  },
-  { "numToStr/Comment.nvim",                                                       -- "gc" to comment visual regions/lines
-    config = function()
-      require("packages.comment");
-    end
-  },
-  { "nvim-treesitter/nvim-treesitter",                                             -- Highlight, edit, and navigate code
-    config = function()
-      require("packages.treesitter");
-    end
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",                                 -- Additional textobjects for treesitter
-  },
+  { require("packages.lazy") },
 
-  {
-    "neovim/nvim-lspconfig",                                                       -- Collection of configurations for built-in LSP client
-  },
-  {
-    "williamboman/mason.nvim",                                                     -- Manage external editor tooling i.e LSP servers
-  },
-  { "williamboman/mason-lspconfig.nvim",                                           -- Automatically install language servers to stdpath
-    config = function()
-      require("mason-lspconfig.install").compilers = { "gcc" };
-    end
-  },
-  { "hrsh7th/nvim-cmp" },                                                          -- Autocompletion
-  { "hrsh7th/cmp-nvim-lsp" },
+  { require("packages.dap") }, -- debugging
+  { require("packages.starter") }, -- define own starting screen
+  { require("packages.Ollama") }, -- define Ollama setup
+  { require("packages.notify") }, -- Fancy and beautiful notification system
+  { require("packages.dressing") },
+  { require("packages.miniIndentscope") },
+  { require("packages.fugitive") },
+  { require("packages.rhubarb") },
+  { require("packages.Gitsigns") }, -- Add git related info in the signs columns and popups
+  { require("packages.comment") },
+  -- potentially group similar packages later
+  { require("packages.treesitter") }, -- Highlight, edit, and navigate code
+  { require("packages.treesitter-textobjects") }, -- Additional textobjects for treesitter
+  -- potentially group similar packages later
+  { require("packages.lspconfig") }, -- Collection of configurations for built-in LSP client
+  { require("packages.mason") }, -- Manage external editor tooling i.e LSP servers
+  { require("packages.mason-lspconfig") }, -- Automatically install language servers to stdpath
+  { require("packages.nvim-cmp") }, -- Autocompletion
 
-  { "L3MON4D3/LuaSnip",                                                            -- Snippet Engine and Snippet Expansion
-    dependencies = { "saadparwaiz1/cmp_luasnip" }
-  },
+  { require("packages.LuaSnip") }, -- Snippet Engine and Snippet Expansion
+  { require("packages.formatter") }, -- use advanced diagnostics with automated formatting
 
-  { "mhartington/formatter.nvim",                                                  -- use advanced diagnostics with automated formatting
-    config = function()
-      require("packages.formatter");
-    end
-  },
+  { require("packages.dracula") }, -- use darcula colortheme
+  { require("packages.LuaLine") }, -- Fancier statusline
+  { require("packages.indent_blankline") }, -- Add indentation guides even on blank lines
+  { require("packages.sleuth") }, -- Detect tabstop and shiftwidth automatically
 
-  { "Mofiqul/dracula.nvim",                                                        -- use darcula colortheme
-    config = function()
-      require("packages.dracula");
-    end
-  },
-  { "nvim-lualine/lualine.nvim",                                                   -- Fancier statusline
-    dependencies = { "Mofiqul/dracula.nvim" },
-    config = function()
-      require("packages.LuaLine");
-    end
-  },
-  { "lukas-reineke/indent-blankline.nvim",                                         -- Add indentation guides even on blank lines
-    main = "ibl",
-    config = function()
-      require("packages.indent_blankline");
-    end
-  },
-  { "tpope/vim-sleuth" },                                                          -- Detect tabstop and shiftwidth automatically
+  -- test telescope at a different stage - currently liking fzf
+  { require("packages.junegunnFzF") }, -- Install fzf and set base requirements
+  { require("packages.FzfLua") }, -- Fuzzy finder for lua
 
-  { "junegunn/fzf",                                                                -- Install fzf and set base requirements instead of telescope
-    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
-    run = "./install --bin",
-  },
-  { "ibhagwan/fzf-lua",                                                            -- Fuzzy finder for lua
-    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },             -- popup for nice fzf looks
-    config = function()
-      require("packages.FzfLua");
-    end
-  },
-  { "kyazdani42/nvim-tree.lua",                                                    -- Use NerdTree
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("packages.nvim-tree");
-    end
-  },
-  { "folke/which-key.nvim",
-    config = function()
-      require("packages.WhichKey");
-    end
-  },
-  -- install without yarn or npm
-  { "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  },
-  { "lervag/vimtex",
-  lazy = false,     -- we don't want to lazy load VimTeX
-  -- tag = "v2.15", -- uncomment to pin to a specific release
-  init = function()
-    -- VimTeX configuration goes here, e.g.
-    vim.g.vimtex_view_method = "zathura"
-  end
-  },
+  { require("packages.nvim-tree") }, -- Use NerdTree
+  { require("packages.WhichKey") },
+  { require("packages.markdown") },
+  { require("packages.vimtex") }, --vimtex
   -- check spell checker and settle on a good version
-  { "mitchpaulus/autocorrect.vim",
-    lazy = false,
-  },
-  -- { "https://git.sr.ht/~swaits/thethethe.nvim",
-  -- lazy = true,
-  -- event = "VeryLazy",
-  -- opts = { },
-  -- },
-  { "norcalli/nvim-colorizer.lua",
-    lazy = false,
-    config = function()
-      require("packages.colorizer");
-    end
-  },
-  { "sindrets/diffview.nvim" },
+  -- { require("packages.thethethe") },
+  { require("packages.autocorrect") },
+  { require("packages.colorizer") },
+  { require("packages.diffview") },
+  -- { require("packages.statuscol") },
 })
 -- stylua: ignore end
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Set colorscheme
+-- enable dracula colorscheme
+vim.cmd[[colorscheme dracula]]
+vim.o.termguicolors = true
+-- set line coloring
+-- Sets colors to line numbers Above, Current and Below  in this order
+-- local LineColoring = require( "packages.dracula" )
+LineNumberColors()
+
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.wo.numberwidth = 2
+vim.wo.numberwidth = 4
 
 -- set min cursor distance from screen border
 vim.o.scrolloff = 8
@@ -211,16 +106,13 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
--- Set colorscheme
--- enable dracula colorscheme
-vim.cmd[[colorscheme dracula]]
-vim.o.termguicolors = true
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
 vim.o.syntax = "true"
 vim.o.autoindent = true
+vim.opt.smartindent = true
+vim.opt.breakindent = true
 vim.o.colorcolumn = "90"
 vim.o.laststatus = 2
 
@@ -239,11 +131,6 @@ vim.o.foldlevel = 99
 vim.opt.linebreak = true
 vim.opt.textwidth = 90
 vim.opt.smarttab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.breakindent = true
-
-vim.opt.termguicolors = true
 
 require("additional")
 require("mappings")

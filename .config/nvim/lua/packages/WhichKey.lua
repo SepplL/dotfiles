@@ -1,14 +1,20 @@
-local wk = require('which-key')
+return { "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+  },
+}
 
-wk.register({
-  -- f = {
-  --   name = 'file',
-  --   f = { '<cmd>lua require("fzf-lua").files()<CR>', 'Find File' },
-  --   r = { 'Open Recent Files' },
-  --   ['1'] = 'which_key_ignore',
-  -- },
-}, { prefix = '<leader>' })
-
-wk.setup({
-  -- config for which-key
-})
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et

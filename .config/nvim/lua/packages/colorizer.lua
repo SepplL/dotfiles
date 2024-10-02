@@ -1,5 +1,10 @@
 -- Attaches to every FileType mode
-require "colorizer".setup()
+return { "norcalli/nvim-colorizer.lua",
+	lazy = false,
+	config = function()
+		require "colorizer".setup()
+	end
+}
 
 -- Attach to certain Filetypes, add special configuration for `html`
 -- Use `background` for everything else.
@@ -35,3 +40,6 @@ require "colorizer".setup()
 --   '!vim'; -- Exclude vim from highlighting.
 --   -- Exclusion Only makes sense if '*' is specified!
 -- }
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
