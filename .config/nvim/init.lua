@@ -69,6 +69,7 @@ require("lazy").setup({
   { require("packages.colorizer") },
   { require("packages.diffview") },
   -- { require("packages.statuscol") },
+  { require("packages.todo") },
 })
 -- stylua: ignore end
 

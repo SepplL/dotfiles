@@ -12,11 +12,13 @@ return { "Mofiqul/dracula.nvim",
     })
 
     function LineNumberColors()
-      local pink = require("dracula").colors()["pink"]
+      -- local pink = require("dracula").colors()["pink"]
+      local orange = require("dracula").colors()["orange"]
       local gray = require("dracula").colors()["gray"]
       -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
       vim.api.nvim_set_hl(0, 'LineNrAbove', { fg=gray, bold=true })
-      vim.api.nvim_set_hl(0, 'LineNr', { fg=pink, bold=true })
+      -- vim.api.nvim_set_hl(0, 'LineNr', { fg=pink, bold=true })
+      vim.api.nvim_set_hl(0, 'LineNr', { fg=orange, bold=true })
       -- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
       vim.api.nvim_set_hl(0, 'LineNrBelow', { fg=gray, bold=true })
     end
