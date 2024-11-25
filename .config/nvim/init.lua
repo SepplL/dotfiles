@@ -1,6 +1,8 @@
 -- disable netrw at the very start of init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- set termguicolors early to avoid render issues
+vim.o.termguicolors = true
 
 -- create symlink to move package directory to /data with
 -- ln -s /data/nvim/... ~/.local/share/nvim
@@ -36,7 +38,6 @@ require("lazy").setup({
 -- Set colorscheme
 -- enable dracula colorscheme
 vim.cmd[[colorscheme dracula]]
-vim.o.termguicolors = true
 -- set line coloring
 -- Sets colors to line numbers Above, Current and Below  in this order
 -- local LineColoring = require( "packages.dracula" )

@@ -63,7 +63,7 @@ zinit light sindresorhus/pure
 #           atpull"%atclone" src"init.zsh"
 # zinit light starship/starship
 
-autoload -Uz compinit && compinit
+autoload -U compinit; compinit
 zinit cdreplay -q
 
 # History
