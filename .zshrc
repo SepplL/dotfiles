@@ -76,6 +76,8 @@ export FZF_DEFAULT_OPTS="
     --color=spinner:#ea9d34,info:#56949f
     --color=pointer:#907aa9,marker:#b4637a,prompt:#797593
     "
+# apply same fzf settings to zoxide
+_ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 # prompt pure zsh
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
@@ -112,7 +114,7 @@ zstyle ':completion:*' menu no
 
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
-# zstyle ':fzf-tab:complete:micromamba:*' fzf-preview
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 alias ls='eza -al --color=always --group-directories-first --icons auto'  # preferred listing
 alias la='eza -a --color=always --group-directories-first --icons auto'  # all files and dirs

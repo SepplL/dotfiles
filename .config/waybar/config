@@ -1,7 +1,7 @@
 {
     "layer": "top",
 	"position": "top",
-	"height": 20,
+	"height": 12,
 	"modules-left": ["user", "river/tags", ],
 	"modules-center": ["river/mode", "river/window", "network", ],
     "modules-right": ["disk", "temperature", "memory", "cpu", "battery", "clock"],
