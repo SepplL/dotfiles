@@ -38,7 +38,7 @@ return {
       }
       return config
     end,
-    -- config = function(_, config)
+    config = function(_, config)
     --   -- close Lazy and re-open when starter is ready
     --   if vim.o.filetype == "lazy" then
     --     vim.cmd.close()
@@ -50,20 +50,20 @@ return {
     --     })
     --   end
     --
-    --   local starter = require("mini.starter")
-    --   starter.setup(config)
-    --
-    --   vim.api.nvim_create_autocmd("User", {
-    --     pattern = "LazyVimStarted",
-    --     callback = function()
-    --       local stats = require("lazy").stats()
-    --       local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    --       local pad_footer = string.rep(" ", 8)
-    --       starter.config.footer = pad_footer .. "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-    --       pcall(starter.refresh)
-    --     end,
-    --   })
-    -- end,
+      local starter = require("mini.starter")
+      starter.setup(config)
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "LazyVimStarted",
+        callback = function()
+          local stats = require("lazy").stats()
+          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          local pad_footer = string.rep(" ", 8)
+          starter.config.footer = pad_footer .. "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+          pcall(starter.refresh)
+        end,
+      })
+    end,
   },
 }
 
