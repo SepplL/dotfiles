@@ -10,6 +10,8 @@ return { "Mofiqul/dracula.nvim",
       lualine_bg_color = '#44475a',  -- default: nil,
       italic_comment = true,
     })
+    vim.o.background = "dark"  -- or "dark" depending on colorscheme
+    vim.cmd.colorscheme('dracula')
 
     function LineNumberColors()
       -- local pink = require("dracula").colors()["pink"]

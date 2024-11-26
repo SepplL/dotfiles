@@ -35,12 +35,9 @@ require("lazy").setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Set colorscheme
--- enable dracula colorscheme
-vim.cmd[[colorscheme dracula]]
+-- colorscheme is handled by loaded package
 -- set line coloring
 -- Sets colors to line numbers Above, Current and Below  in this order
--- local LineColoring = require( "packages.dracula" )
 LineNumberColors()
 
 -- Make line numbers default

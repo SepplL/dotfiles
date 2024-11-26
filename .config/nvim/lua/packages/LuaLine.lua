@@ -7,7 +7,7 @@ return { "nvim-lualine/lualine.nvim",
     require('lualine').setup({
       options = {
         icons_enabled = true,
-        theme = 'dracula',
+        -- theme = 'neobones', handled automagically by colorscheme choice
         component_separators = '',
         section_separators = '',
         disabled_filetypes = {}

@@ -24,7 +24,10 @@ return {
   { require("packages.LuaSnip") }, -- Snippet Engine and Snippet Expansion
   { require("packages.formatter") }, -- use advanced diagnostics with automated formatting
 
-  { require("packages.dracula") }, -- use darcula colortheme
+  -- colorschemes
+  -- { require("packages.dracula") }, -- use darcula colortheme
+  { require("packages.rosepine") }, -- use rosepine colortheme
+
   { require("packages.LuaLine") }, -- Fancier statusline
   { require("packages.indent_blankline") }, -- Add indentation guides even on blank lines
   { require("packages.sleuth") }, -- Detect tabstop and shiftwidth automatically
