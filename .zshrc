@@ -49,41 +49,11 @@ zinit snippet OMZP::python
 zinit snippet OMZP::vim-interaction
 zinit snippet OMZP::vagrant
 
-# fzf dracula color theme
-# export FZF_DEFAULT_OPTS="
-#     --height=60% 
-#     --layout=reverse 
-#     --info=inline 
-#     --border
-#     --margin=1
-#     --padding=1
-#     --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
-#     --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
-#     --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
-#     --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4
-#     "
-# fzf rose-pine-dawn color theme
-export FZF_DEFAULT_OPTS="
-    --height=60% 
-    --layout=reverse 
-    --info=inline 
-    --border
-    --margin=1
-    --padding=1
-    --color=fg:#797593,bg:#faf4ed,hl:#d7827e
-    --color=fg+:#575279,bg+:#f2e9e1,hl+:#d7827e
-    --color=border:#dfdad9,header:#286983,gutter:#faf4ed
-    --color=spinner:#ea9d34,info:#56949f
-    --color=pointer:#907aa9,marker:#b4637a,prompt:#797593
-    "
-# apply same fzf settings to zoxide
-_ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
-
 # prompt pure zsh
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-# prompt starship
+# prompt starship - previouly used alternative
 # ; ./starship completions zsh > _starship" \ -- use this for starship completions
 # zinit ice as"command" from"gh-r" \
 #           atclone"./starship init zsh > init.zsh" \
@@ -106,31 +76,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Completion settings
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*' menu no
-
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -al --color=always --group-directories-first --icons'
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
-
-alias ls='eza -al --color=always --group-directories-first --icons auto'  # preferred listing
-alias la='eza -a --color=always --group-directories-first --icons auto'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first --icons auto'  # long format
-alias lt='eza -aT --color=always --group-directories-first --icons auto'  # tree listing
-alias l='eza -lah --color=always --group-directories-first --icons auto'  # tree listing
-
-alias open='imv '
-# include dotfiles repo for maintaining and saving configs
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-# include kitten to ssh - now showing screens correctly
-alias kssh="kitten ssh"
-alias kdiff="kitten diff"
-
-# Completion for kitty
-# kitty + complete setup zsh | source /dev/stdin
+source ~/.zsh/styling.zsh
+source ~/.zsh/aliases.zsh
 
 export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
 
@@ -153,9 +100,5 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-eval $(ssh-agent -s)
-eval "$(fzf --zsh)"
-eval "$(zoxide init zsh --cmd cd)"
-# micromamba inclusion:
-eval "$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-# eval "$(micromamba shell hook)"
+
+source ~/.zsh/evals.zsh
