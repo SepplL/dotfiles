@@ -26,10 +26,6 @@ zi ice for \
         zsh-users/zsh-completions \
     lucid \
     wait \
-    atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
-    lucid \
-    wait \
         redxtech/zsh-kitty \
 
 zi for \
@@ -38,6 +34,10 @@ zi for \
     lucid \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
+    lucid \
+    wait \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
 
 # old settings from OMZ
 zinit snippet OMZP::git
