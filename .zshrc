@@ -18,25 +18,26 @@ source ~/.zsh/key-bindings.zsh
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # turbo quick load all
-zinit wait lucid for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma-continuum/fast-syntax-highlighting \
+zi ice for \
+    atload"zicompinit; zicdreplay" \
     blockf \
+    lucid \
+    wait \
         zsh-users/zsh-completions \
+    lucid \
+    wait \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
+    lucid \
+    wait \
+        redxtech/zsh-kitty \
 
-# old syntax highlighting - try faster startup
-# zsh-users/zsh-syntax-highlighting \
-zinit wait lucid light-mode for \
-    Aloxaf/fzf-tab \
-    redxtech/zsh-kitty \
-
-# zinit wait lucid load for \
-#     zdharma-continuum/zinit-annex-as-monitor \
-#     zdharma-continuum/zinit-annex-bin-gem-node \
-#     zdharma-continuum/zinit-annex-patch-dl \
-#     zdharma-continuum/zinit-annex-rust \
+zi for \
+    lucid \
+        Aloxaf/fzf-tab \
+    lucid \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
 
 # old settings from OMZ
 zinit snippet OMZP::git
@@ -60,7 +61,7 @@ zinit light sindresorhus/pure
 #           atpull"%atclone" src"init.zsh"
 # zinit light starship/starship
 
-autoload -U compinit; compinit
+autoload -Uz compinit; compinit
 zinit cdreplay -q
 
 # History
@@ -79,15 +80,6 @@ setopt hist_find_no_dups
 source ~/.zsh/styling.zsh
 source ~/.zsh/aliases.zsh
 
-export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
-
-# toolbox homepage
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
-
-export VISUAL=nvim
-export EDITOR=nvim
-
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'micromamba shell init' !!
 export MAMBA_EXE='/home/seppl/.local/bin/micromamba';
@@ -101,4 +93,4 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-source ~/.zsh/evals.zsh
+source ~/.zlogin
