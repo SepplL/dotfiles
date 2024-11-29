@@ -18,37 +18,20 @@ source ~/.zsh/key-bindings.zsh
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # turbo quick load all
-zi ice for \
-    atload"zicompinit; zicdreplay" \
+zinit ice lucid for \
+    atload"!zicompinit; zicdreplay" \
     blockf \
-    lucid \
-    wait \
         zsh-users/zsh-completions \
-    lucid \
-    wait \
         redxtech/zsh-kitty \
 
-zi for \
-    lucid \
-        Aloxaf/fzf-tab \
-    lucid \
+zinit lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
-    lucid \
-    wait \
-    atload"!_zsh_autosuggest_start" \
+        Aloxaf/fzf-tab \
         zsh-users/zsh-autosuggestions \
 
-# old settings from OMZ
-zinit snippet OMZP::git
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::sudo
-zinit snippet OMZP::command-not-found
-zinit snippet OMZP::git-extras
-zinit snippet OMZP::pylint
-zinit snippet OMZP::python
-zinit snippet OMZP::vim-interaction
-zinit snippet OMZP::vagrant
+# if autosuggestions stops working include:
+# atload"!_zsh_autosuggest_start" \
 
 # prompt pure zsh
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
@@ -60,6 +43,18 @@ zinit light sindresorhus/pure
 #           atclone"./starship init zsh > init.zsh" \
 #           atpull"%atclone" src"init.zsh"
 # zinit light starship/starship
+
+# old settings from OMZ
+zinit for \
+    OMZP::git \
+    OMZL::git.zsh \
+    OMZP::sudo \
+    OMZP::command-not-found \
+    OMZP::git-extras \
+    OMZP::pylint \
+    OMZP::python \
+    OMZP::vim-interaction \
+    OMZP::vagrant \
 
 autoload -Uz compinit; compinit
 zinit cdreplay -q
