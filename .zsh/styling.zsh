@@ -22,7 +22,7 @@ export FZF_DEFAULT_OPTS="
     --border
     --margin=1
     --padding=1
-    --color=fg:#797593,bg:#faf4ed,hl:#d7827e
+    --color=fg:#797593,bg:#f8f0e7,hl:#d7827e
     --color=fg+:#575279,bg+:#f2e9e1,hl+:#d7827e
     --color=border:#dfdad9,header:#286983,gutter:#faf4ed
     --color=spinner:#ea9d34,info:#56949f

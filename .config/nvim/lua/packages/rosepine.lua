@@ -60,6 +60,9 @@ return { "rose-pine/neovim",
         --     base = '#18191a',
         --     overlay = '#363738',
         -- },
+        dawn = {
+          base = "#f8f0e7",
+        },
       },
 
       highlight_groups = {
@@ -96,7 +99,7 @@ return { "rose-pine/neovim",
       end
 
     })
-    vim.cmd.colorscheme('rose-pine')
+    vim.cmd.colorscheme('rose-pine-dawn')
 
     function LineNumberColors()
       local pine = "#286983"  -- from rose-pine palette
