@@ -38,6 +38,12 @@
 	bordercolor: @ora;
 }
 
+configuration {
+    show-icons:      true;
+    display-drun:    "";
+    disable-history: false;
+}
+
 #window {
 	background-color: @background;
 	border:           3;

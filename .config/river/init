@@ -139,10 +139,10 @@ riverctl spawn dunst
 
 # swayidle for idle and locking management
 riverctl spawn "swayidle -w \
-	timeout 300 'swaylock -i ~/.config/swaylock/dracula-wallpaper.svg' \
+	timeout 300 'swaylock -i ~/.config/swaylock/blockwavedawn.png' \
 	timeout 600 'dunstify output off' \
 	resume 'dunstify output resumed' \
-	before-sleep 'swaylock -i ~/.config/swaylock/dracula-wallpaper.svg'	"
+	before-sleep 'swaylock -i ~/.config/swaylock/blockwavedawn.png'	"
 
 # swaybg
 [[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/leafy-dawn.png"
