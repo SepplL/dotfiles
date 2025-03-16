@@ -6,8 +6,8 @@
 #		'AltGr' modifier is also known as Mod5
 #		'Capslock' modifier is also known as Lock
 
-# start kitty terminal
-riverctl map normal Super Return spawn kitty
+# start ghostty terminal
+riverctl map normal Super Return spawn ghostty
 
 # exit river
 riverctl map normal Super+Control E exit
@@ -16,8 +16,8 @@ riverctl map normal Super+Control E exit
 # define mode for different groups of activities
 riverctl declare-mode launcher
 riverctl map normal Super D enter-mode launcher
-riverctl map launcher None F spawn "flatpak run io.github.zen_browser.zen & riverctl enter-mode normal"
-riverctl map launcher None T spawn "kitty & riverctl enter-mode normal"
+riverctl map launcher None I spawn "flatpak run app.zen_browser.zen & riverctl enter-mode normal"
+riverctl map launcher None T spawn "ghostty & riverctl enter-mode normal"
 riverctl map launcher None R spawn "rofi -show drun & riverctl enter-mode normal"
 riverctl map launcher Shift R spawn "rofi -show run & riverctl enter-mode normal"
 riverctl map launcher None Escape enter-mode normal
@@ -145,4 +145,4 @@ riverctl spawn "swayidle -w \
 	before-sleep 'swaylock -i ~/.config/swaylock/dracula-wallpaper.svg'	"
 
 # swaybg
-[[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/dracula-soft-waves-44475a.png"
+[[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/leafy-dawn.png"
