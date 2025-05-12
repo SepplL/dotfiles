@@ -25,7 +25,9 @@
 	"network": {
 			"interface": "wlp0s20f3",
 			"format": "{ifname}",
-			"format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
+			// "format-wifi": "{essid} ({signalStrength}%) {ipaddr} / {cidr}",
+			"format-wifi": "{essid} ({signalStrength}%) - {bandwidthTotalBytes}",
+			"format-ethernet": "{ipaddr} / {cidr} - {bandwidthTotalBytes}",
 			"format-disconnected": "",
 			"max-length": 50,
 	},
