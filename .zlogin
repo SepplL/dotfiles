@@ -3,7 +3,7 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # path modifications
 # path=("$HOME/.local/bin" $path)
-path=("$HOME/.local/texlive/2024/bin/x86_64-linux" $path)  # prepend
+path=("$HOME/.local/texlive/2025/bin/x86_64-linux" $path)  # prepend
 path+=("$GEM_HOME/bin")  # append
 
 export VISUAL=nvim
