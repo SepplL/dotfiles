@@ -1,0 +1,41 @@
+# Fingerprint works for now - password based authentication WIP
+# Also fix text showing later
+# Background color
+color=#f8f0e7
+
+# Layout text colors
+layout-text-color=#575279
+
+# Text color
+text-color=#286983
+text-clear-color=#56949f
+text-caps-lock-color=#ea9d34
+text-ver-color=#907aa9
+text-wrong-color=#b4637a
+
+# Highlight segments
+bs-hl-color=#f8f0e7
+key-hl-color=#286983
+caps-lock-bs-hl-color=#f8f0e7
+caps-lock-key-hl-color=#ea9d34
+
+# Inside of the indicator
+inside-color=#286983
+inside-clear-color=#56949f
+inside-caps-lock-color=#ea9d34
+inside-ver-color=#907aa9
+inside-wrong-color=#b4637a
+
+# Line between the inside and ring
+line-color=#286983
+line-clear-color=#56949f
+line-caps-lock-color=#ea9d34
+line-ver-color=#907aa9
+line-wrong-color=#b4637a
+
+# Indicator ring
+ring-color=#286983
+ring-clear-color=#56949f
+ring-caps-lock-color=#ea9d34
+ring-ver-color=#907aa9
+ring-wrong-color=#b4637a

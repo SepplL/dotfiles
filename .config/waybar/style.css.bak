@@ -1,0 +1,87 @@
+* {
+		border: none;
+		border-radius: 0;
+		font-family: "JetBrainsMonoNerdFontMono";
+		font-size: 12px;
+		min-height: 0;
+}
+
+window#waybar {
+		background: #282a36;
+		color: #f8f8f2;
+}
+
+#user {
+		padding: 0 10px;
+		background-color: #282a36;
+		color: #f8f8f2;
+}
+#tags {
+		padding: 0 0px;
+		background-color: #69ff94;
+		color: #f8f8f2;
+		font-weight: bold;
+}
+#tags button.occupied {
+		padding: 0 16px;
+		background-color: #8be9fd;
+		color: #21222c;
+		font-weight: bold;
+}
+#tags button.focused {
+		padding: 0 16px;
+		background-color: #bd93f9;
+		color: #f8f8f2;
+		font-weight: bold;
+}
+#mode {
+		padding: 0 10px;
+		color: #f8f8f2;
+}
+#window {
+		padding: 0 5px;
+		font-weight: bold;
+		background-color: #8be9fd;
+		color: #21222c;
+}
+#window.focussed {
+		padding: 0 5px;
+		font-weight: bold;
+		background-color: #8be9fd;
+		color: #21222c;
+}
+#network {
+		padding: 0 10px;
+		color: #f8f8f2;
+}
+#disk {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #f1fa8c;
+}
+#temperature {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #ff5555;
+}
+#memory {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #50fa7b;
+}
+#cpu {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #bd93f9;
+}
+#battery {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #8be9fd;
+}
+#clock {
+		padding: 0 5px;
+		color: #282a36 ;
+		background-color: #ff79c6;
+		font-weight: bold;
+}

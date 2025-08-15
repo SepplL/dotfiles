@@ -1,0 +1,33 @@
+# Ansible runtime and backups
+*.original
+*.tmp
+*.bkp
+*.retry
+*.*~
+
+# Try tyo avoid any plain-text passwords 
+*pwd*
+*pass*
+*password*
+# *.txt
+
+# Exclude all binaries
+*.bin
+*.jar
+*.tar
+*.zip
+*.gzip
+*.tgz
+
+# nvim packer specific folder
+plugin/
+lazy-lock.json
+
+# Compiled Lua sources
+luac.out
+**/lua/.luarc.json
+
+# luarocks build files
+*.src.rock
+*.zip
+*.tar.gz

@@ -1,0 +1,111 @@
+* {
+		border: none;
+		border-radius: 0;
+		font-family: "JetBrainsMonoNerdFontMono";
+		font-size: 12px;
+		min-height: 0;
+}
+
+/*
+* Variant: Rosé Pine Dawn
+* Maintainer: DankChoir
+*/
+
+@define-color base            #f8f0e7;
+@define-color surface         #fffaf3;
+@define-color overlay         #f2e9e1;
+
+@define-color muted           #9893a5;
+@define-color subtle          #797593;
+@define-color text            #575279;
+
+@define-color love            #b4637a;
+@define-color gold            #ea9d34;
+@define-color rose            #d7827e;
+@define-color pine            #286983;
+@define-color foam            #56949f;
+@define-color iris            #907aa9;
+
+@define-color highlightLow    #f4ede8;
+@define-color highlightMed    #dfdad9;
+@define-color highlightHigh   #cecacd;
+
+window#waybar {
+		background: @base;
+		color: @surface;
+}
+
+#user {
+		padding: 0 10px;
+		background-color: @base;
+		color: @subtle;
+}
+#tags {
+		padding: 0 0px;
+		background-color: @foam;
+		color: @overlay;
+		font-weight: bold;
+}
+#tags button.occupied {
+		padding: 0 16px;
+		background-color: @foam;
+		color: @overlay;
+		font-weight: bold;
+}
+#tags button.focused {
+		padding: 0 16px;
+		background-color: @iris;
+		color: @overlay;
+		font-weight: bold;
+}
+#mode {
+		padding: 0 10px;
+		color: @subtle;
+}
+#window {
+		padding: 0 5px;
+		font-weight: bold;
+		background-color: @base;
+		color: @gold;
+}
+#window.focussed {
+		padding: 0 5px;
+		font-weight: bold;
+		background-color: @base;
+		color: @gold;
+}
+#network {
+		padding: 0 10px;
+		color: @subtle;
+}
+#disk {
+		padding: 0 5px;
+		background-color: @gold;
+		color: @text;
+}
+#temperature {
+		padding: 0 5px;
+		background-color: @love;
+		color: @surface;
+}
+#memory {
+		padding: 0 5px;
+		background-color: @pine;
+		color: @surface;
+}
+#cpu {
+		padding: 0 5px;
+		background-color: @iris;
+		color: @surface;
+}
+#battery {
+		padding: 0 5px;
+		background-color: @foam;
+		color: @text;
+}
+#clock {
+		padding: 0 5px;
+		background-color: @rose;
+		color: @text;
+		font-weight: bold;
+}

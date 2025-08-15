@@ -1,0 +1,68 @@
+{
+    "layer": "top",
+	"position": "top",
+	"height": 25,
+	"modules-left": ["user", "river/tags", ],
+	"modules-center": ["river/mode", "river/window", "network", ],
+    "modules-right": ["disk", "temperature", "memory", "cpu", "battery", "clock"],
+	"user": {
+			"format": "{user} (↑{work_H}:{work_M})",
+			"interval": 60,
+	},
+	"river/tags": {
+			"num-tags": 9,
+			"tag-labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+			"disable-click": false,
+			"hide-vacant": true,
+	},
+	"river/mode": {
+			"format": "mode: {}",
+	},
+	"river/window": {
+			"format": "{}",
+			"max-length": 50,
+	},
+	"network": {
+			"interface": "wlp0s20f3",
+			"format": "{ifname}",
+			// "format-wifi": "{essid} ({signalStrength}%) {ipaddr} / {cidr}",
+			"format-wifi": "{essid} ({signalStrength}%) - {bandwidthTotalBytes}",
+			"format-ethernet": "{ipaddr} / {cidr} - {bandwidthTotalBytes}",
+			"format-disconnected": "",
+			"max-length": 50,
+	},
+	"disk": {
+			"interval": 45,
+			"format": "{percentage_used}% used on {path}",
+			"path": "/",
+	},
+	"temperature": {
+			"format": "T: {temperatureC}°C",
+	},
+	"memory": {
+			"interval": 30,
+			"format": "MEM: {used:0.1f}G/{total:0.1f}G",
+	},
+	"cpu": {
+			"interval": 10,
+			"format": "CPU: {usage}%",
+	},
+	"battery": {
+			"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "󰂄 {capacity}%",
+        	"format-plugged": "󰂄{capacity}%",
+        	"format-alt": "{time} {icon}",
+        	"format-full": "󰁹 {capacity}%",
+        	"format-icons": ["󰁺", "󰁼", "󰁾", "󰂁"]
+	},
+	"sway/language": {
+			"format": "{short} {variant}",
+	},
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+}

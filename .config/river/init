@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# This is the river configuration file
+# Note: 'Super' modifier is also known as Logo, GUI, Windows, Mod4
+#		'Alt' modifier is also known as Meta, Mod1
+#		'AltGr' modifier is also known as Mod5
+#		'Capslock' modifier is also known as Lock
+
+# start ghostty terminal
+riverctl map normal Super Return spawn ghostty
+
+# exit river
+riverctl map normal Super+Control E exit
+
+# set more key bindings and setting
+# define mode for different groups of activities
+riverctl declare-mode launcher
+riverctl map normal Super D enter-mode launcher
+riverctl map launcher None I spawn "flatpak run app.zen_browser.zen & riverctl enter-mode normal"
+riverctl map launcher None T spawn "ghostty & riverctl enter-mode normal"
+riverctl map launcher None R spawn "rofi -show drun & riverctl enter-mode normal"
+riverctl map launcher Shift R spawn "rofi -show run & riverctl enter-mode normal"
+riverctl map launcher None Escape enter-mode normal
+
+# WM moves and settings in all declared modes
+for mode in normal launcher
+do
+	# change focus window
+	riverctl map $mode Super J focus-view next
+	riverctl map $mode Super K focus-view previous
+	# swap focus window
+	riverctl map $mode Super+Shift J swap next
+	riverctl map $mode Super+Shift K swap previous
+	# get current window to top of stack
+	riverctl map $mode Super+Shift Return zoom
+	# Close the focused window
+	riverctl map $mode Super+Control Q close
+done
+
+# rivertile settings in new mode
+riverctl declare-mode rivertile
+riverctl map normal Super R enter-mode rivertile
+riverctl map rivertile None Escape enter-mode normal
+# rivertile commands
+# main location
+riverctl map rivertile Super H send-layout-cmd rivertile "main-location left"
+riverctl map rivertile Super J send-layout-cmd rivertile "main-location bottom"
+riverctl map rivertile Super K send-layout-cmd rivertile "main-location top"
+riverctl map rivertile Super L send-layout-cmd rivertile "main-location right"
+
+# number of windows in main
+riverctl map rivertile Super+Shift K send-layout-cmd rivertile "main-count +1"
+riverctl map rivertile Super+Shift J send-layout-cmd rivertile "main-count -1"
+# set numerical value directly
+for i in $(seq 1 9)
+do
+	riverctl map rivertile Super+Alt $i send-layout-cmd rivertile "main-count $i"
+done
+
+# window size in main
+riverctl map rivertile Super+Shift H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map rivertile Super+Shift L send-layout-cmd rivertile "main-ratio +0.05"
+
+# floating settings
+# maybe later - for now focus on tiling
+
+# Tags / Workspaces - always available
+for mode in normal launcher rivertile
+do
+	for i in $(seq 1 9)
+	do
+		tagmask=$((1 << ($i - 1)))
+		riverctl map $mode Super				$i set-focused-tags		$tagmask
+		riverctl map $mode Super+Shift			$i set-view-tags		$tagmask
+		riverctl map $mode Super+Control		$i toggle-focused-tags	$tagmask
+		riverctl map $mode Super+Shift+Control	$i toggle-view-tags		$tagmask
+	done
+	all_tags_mask=$(((1 << 32) - 1))
+
+	riverctl map $mode Super		0 set-focused-tags	$all_tags_mask
+	riverctl map $mode Super+Shift	0 set-view-tags		$all_tags_mask
+
+done
+
+# set background and border color
+riverctl background-color 0x282a36
+riverctl border-color-focused 0xbd93f9
+riverctl border-color-unfocussed 0x69ff94
+riverctl border-width 3
+
+# set keyboard repeat rate
+riverctl set-repeat 50 300
+
+# Set the default layout generetor to be rivertile and start it
+# River will send the process group of the init executable SIGTERM on exit
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6 &
+
+# set input devices to correct settings
+# only works on thinkpad pointer currently. Other device needs adjustment ofc.
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad natural-scroll enabled
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad disable-while-typing enabled 
+riverctl input pointer-1267-12793-ELAN067C:00_04F3:31F9_Touchpad tap enabled
+
+# add river rule to make window floating (use for Show me the key)
+riverctl map normal Mod4 Space toggle-float
+# move and resize floating windows
+riverctl map normal Mod4+Mod1         H move left  100
+riverctl map normal Mod4+Mod1         J move down  100
+riverctl map normal Mod4+Mod1         K move up    100
+riverctl map normal Mod4+Mod1         L move right 100
+riverctl map normal Mod4+Mod1+Control H snap left
+riverctl map normal Mod4+Mod1+Control J snap down
+riverctl map normal Mod4+Mod1+Control K snap up
+riverctl map normal Mod4+Mod1+Control L snap right
+riverctl map normal Mod4+Mod1+Shift   H resize horizontal -100
+riverctl map normal Mod4+Mod1+Shift   J resize vertical    100
+riverctl map normal Mod4+Mod1+Shift   K resize vertical   -100
+riverctl map normal Mod4+Mod1+Shift   L resize horizontal  100
+
+# Super+Period and Super+Comma to focus the next/previous output
+riverctl map normal Mod4 Period focus-output next
+riverctl map normal Mod4 Comma focus-output previous
+
+# Super+Shift+{Period,Comma} to send the focused view to the next/previous output
+riverctl map normal Mod4+Shift Period send-to-output next
+riverctl map normal Mod4+Shift Comma send-to-output previous
+
+# toggle full screen
+riverctl map normal Mod4 F toggle-fullscreen
+
+# set initial tasks and programs
+# waybar
+riverctl spawn waybar
+riverctl spawn dunst
+
+# lock on closed lid
+# rivertile input switch-0-5-Lid_Switch events enabled
+
+# swayidle for idle and locking management
+riverctl spawn "swayidle -w \
+	timeout 300 'swaylock -i ~/.config/swaylock/blockwavedawn.png' \
+	timeout 600 'dunstify output off' \
+	resume 'dunstify output resumed' \
+	before-sleep 'swaylock -i ~/.config/swaylock/blockwavedawn.png'	"
+
+# swaybg
+[[ -e ~/.config/river/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/.config/river/leafy-dawn.png"
