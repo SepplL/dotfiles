@@ -1,0 +1,11 @@
+- name: Bootstrap development environment
+  hosts: localhost
+
+  tasks:
+    - name: Install packages with dnf
+      become: yes
+      ansible.builtin.dnf:
+        name:
+        - git
+        - make
+        state: present
