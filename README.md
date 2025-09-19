@@ -4,7 +4,7 @@ Manage with 'ansible' [link here](https://docs.ansible.com/)
 
 The first iteration is a wayland-river-waybar setup in consistent rose-pine-dawn themes.
 - Terminal: ghostty/zsh - zinit
-- Editor: Neovim - lazy mason
+- Editor: Neovim - lazy + mason
 
 initial inspiration and credit to [this guide](https://phelipetls.github.io/posts/introduction-to-ansible/)
 
@@ -22,3 +22,5 @@ ansible-playbook --ask-become-pass bootstrap.yml
 - toolbox settings and installation
 - potentially build software from source, link code via submodules or clone
 - make install process smoother
+- sort different settings and groups toggleable settings, e.g. river + dracula setup
+
