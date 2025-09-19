@@ -46,7 +46,7 @@
         - swaybar
         - ghostty
         state: present
-      when: ansible_distribution == "openSUSE"
+      when: ansible_distribution == "openSUSE Tumbleweed"
 
     - name: Run Stow  # to manage the dotfiles
       shell: "stow --target={{ ansible_env.HOME }} .dotfiles --verbose=2"
