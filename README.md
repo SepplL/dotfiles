@@ -23,4 +23,6 @@ ansible-playbook --ask-become-pass bootstrap.yml
 - potentially build software from source, link code via submodules or clone
 - make install process smoother
 - sort different settings and groups toggleable settings, e.g. river + dracula setup
+- re-structure directories based on packages/topics? -> less clutter but also more verbose
+  than just a `.dotfiles`
 
