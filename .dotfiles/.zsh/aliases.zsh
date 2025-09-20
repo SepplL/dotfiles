@@ -8,11 +8,3 @@ alias lt='eza -aT --color=always --group-directories-first --icons auto'  # tree
 alias l='eza -lah --color=always --group-directories-first --icons auto'  # tree listing
 
 alias open='imv '
-
-# include dotfiles repo for maintaining and saving configs
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-
-# kitten aliases for frequently used kittens
-alias kssh="kitten ssh"
-alias kdiff="kitten diff"
-
