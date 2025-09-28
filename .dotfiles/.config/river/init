@@ -14,8 +14,13 @@ riverctl map normal Super+Control E exit
 
 # set more key bindings and setting
 # define mode for different groups of activities
+
+# quick access to rofi
+riverctl map normal Super D spawn "rofi -show drun"
+
+# launcher mode for ease of access to frequently used programs
 riverctl declare-mode launcher
-riverctl map normal Super D enter-mode launcher
+riverctl map normal Super L enter-mode launcher
 riverctl map launcher None I spawn "flatpak run app.zen_browser.zen & riverctl enter-mode normal"
 riverctl map launcher None T spawn "ghostty & riverctl enter-mode normal"
 riverctl map launcher None R spawn "rofi -show drun & riverctl enter-mode normal"
