@@ -16,11 +16,11 @@ fn read_line(line_buffer: []u8, input: *std.Io.Reader) ![]u8 {
 
 fn number_input(comptime number_type: type, input_buffer: []u8, input: *std.Io.Reader, output: *std.Io.Writer) !number_type {
 
-    try output.writeAll("A number please: ");
+    try output.writeAll("Input percent of brightness change: ");
     try output.flush();
 
     const input_line = try read_line(input_buffer, input);
-    return std.fmt.parseInt(number_type, input_line, 10);
+    return std.fmt.parseFloat(number_type, input_line);
 }
 
 pub fn main() !void {
@@ -31,8 +31,11 @@ pub fn main() !void {
         _ = gpa.deinit();
     }
 
+    const max_brightness_file = "/sys/class/backlight/intel_backlight/max_brightness";
+    const current_brightness_file = "/sys/class/backlight/intel_backlight/brightness";
+
     // Open the file
-    const maxBRfile = try std.fs.cwd().openFile("/sys/class/backlight/intel_backlight/max_brightness", .{});
+    const maxBRfile = try std.fs.cwd().openFile(max_brightness_file, .{});
     defer maxBRfile.close();
 
     // Read file into buffer
@@ -42,7 +45,7 @@ pub fn main() !void {
 
     const max_brightness = try std.fmt.parseInt(i32, maxbuffer[0 .. maxbuffer.len - 1], 10);
 
-    const currBRfile = try std.fs.cwd().openFile("/sys/class/backlight/intel_backlight/brightness", .{});
+    const currBRfile = try std.fs.cwd().openFile(current_brightness_file, .{});
     defer currBRfile.close();
 
     // Read file into buffer
@@ -58,31 +61,42 @@ pub fn main() !void {
     var stdin = std.fs.File.stdin().reader(&input_buffer);
     var stdout = std.fs.File.stdout().writer(&output_buffer);
 
-    const user_input: i32 = try number_input(i32, input_buffer[0..], &stdin.interface, &stdout.interface);
+    const user_input: f32 = try number_input(f32, input_buffer[0..], &stdin.interface, &stdout.interface);
 
-    try stdout.interface.print("Max Brightness {d}\n", .{max_brightness});
-    try stdout.interface.print("Current Brightness {d}\n", .{current_brightness});
-    try stdout.interface.print("User Input {d}\n", .{user_input});
-
+    // try stdout.interface.print("Max Brightness {d}\n", .{max_brightness});
+    // try stdout.interface.print("Current Brightness {d}\n", .{current_brightness});
+    // try stdout.interface.print("User Input {d}\n", .{user_input});
     try stdout.interface.flush();
-}
 
-test "simple test" {
-    var list = std.ArrayList(i32).init(std.testing.allocator);
-    defer list.deinit(); // Try commenting this out and see if zig detects the memory leak!
-    try list.append(42);
-    try std.testing.expectEqual(@as(i32, 42), list.pop());
-}
+    // define minimal birghtness to prevent pitch black screen on accident
+    const minimal_brightness: i32 = 250;
 
-test "fuzz example" {
-    const Context = struct {
-        fn testOne(context: @This(), input: []const u8) anyerror!void {
-            _ = context;
-            // Try passing `--fuzz` to `zig build test` and see if it manages to fail this test case!
-            try std.testing.expect(!std.mem.eql(u8, "canyoufindme", input));
-        }
-    };
-    try std.testing.fuzz(Context{}, Context.testOne, .{});
+    // calculate percentage diff - user input is delta percent for brightness change
+    const max_percent: f32 = 100;
+    const max_brightness_float: f32 = @floatFromInt(max_brightness);
+    const delta_brightness: f32 = @divExact(user_input, max_percent) * max_brightness_float;
+
+    // check for constraints of max and min value
+    const new_brightness_delta: i32 = @as(i32, @intFromFloat(delta_brightness));
+    var new_brightness: i32 = current_brightness + new_brightness_delta;
+    if (new_brightness <= minimal_brightness) {
+        new_brightness = minimal_brightness;
+    }
+    if (new_brightness >= max_brightness) {
+        new_brightness = max_brightness;
+    }
+
+    // write new brightness to file
+    const file = try std.fs.cwd().createFile(
+        current_brightness_file,
+        .{ .read = true, .truncate = true },
+    );
+    defer file.close();
+
+    std.debug.print("old brightness value: {d}\n", .{current_brightness});
+    std.debug.print("new brightness value: {d}\n", .{new_brightness});
+    // try stdout.file.writer(current_brightness_file);
+    // stdout.interface.flush();
 }
 
 /// This imports the separate module containing `root.zig`. Take a look in `build.zig` for details.
