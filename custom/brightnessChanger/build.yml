@@ -1,0 +1,7 @@
+- name: Build brightness changing script into ~/.local
+  hosts: localhost
+
+  tasks:
+    - name: Build with zig into ~/.local/{bin,lib}
+      # file: ~/.local/bin/brightnessChanger
+      shell: "zig build install -Doptimize=ReleaseFast -p ~/.local"

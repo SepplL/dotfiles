@@ -50,6 +50,14 @@
         state: present
       when: ansible_distribution == "openSUSE Tumbleweed"
 
+    - stat: 
+        path: $HOME/.local/bin/brightnessChanger
+      register: statusBR
+
+    - name: Include building Brightness Changer from custom to ~/.local
+      include_tasks: ./custom/brightnessChanger/build.yml
+      when: not statusBR.stat.exists
+
     - name: Run Stow  # to manage the dotfiles
       shell: "stow --target={{ ansible_env.HOME }} .dotfiles --verbose=2"
       register: result

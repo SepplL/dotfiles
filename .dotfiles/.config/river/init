@@ -134,6 +134,10 @@ riverctl map normal Mod4+Shift Comma send-to-output previous
 # toggle full screen
 riverctl map normal Mod4 F toggle-fullscreen
 
+# change screen brightness with self-written script:
+# riverctl map rivertile Super D spawn "echo -10 | sudo ~/.local/bin/brightnessChanger "
+riverctl map rivertile Super E spawn "sudo ~/.local/bin/brightnessChanger"
+
 # set initial tasks and programs
 # waybar
 riverctl spawn waybar
