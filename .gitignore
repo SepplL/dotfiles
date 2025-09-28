@@ -31,3 +31,7 @@ luac.out
 *.src.rock
 *.zip
 *.tar.gz
+
+# zig compile fragments
+zig-out/
+.zig-cache/
