@@ -4,23 +4,23 @@
 
 const std = @import("std");
 
-fn number_input(comptime number_type: type) !number_type {
-    var buf: [1024]u8 = undefined;
-    // var stdout = std.fs.File.stdout().writerStreaming(&.{});
-    var stdout = std.fs.File.stdout().writerStreaming(&buf);
-    // faster with &buf -> buffer read/write calls and execute them grouped to reduce sys
-    // calls. This is a quick and dirty test
-    var in = std.fs.File.stdin().readerStreaming(&buf);
-    var bufUntilEofReader = std.Io.Reader.defaultReadVec(&in);
-    const reader = &bufUntilEofReader.interface;
+fn read_line(line_buffer: []u8, input: *std.Io.Reader) ![]u8 {
+    var w: std.Io.Writer = .fixed(line_buffer);
 
-    try stdout.interface.print("A number please: ", .{});
+    // var for windows -> search and fix for \r, but does not apply here.
+    const line_length = try input.streamDelimiterLimit(&w, '\n', .unlimited);
+    std.debug.assert(line_length <= line_buffer.len);
 
-    if (try reader(buf[0..], '\n')) |user_input| {
-        return std.fmt.parseInt(number_type, user_input, 10);
-    } else {
-        return @as(number_type, 0);
-    }
+    return line_buffer[0..line_length];
+}
+
+fn number_input(comptime number_type: type, input_buffer: []u8, input: *std.Io.Reader, output: *std.Io.Writer) !number_type {
+
+    try output.writeAll("A number please: ");
+    try output.flush();
+
+    const input_line = try read_line(input_buffer, input);
+    return std.fmt.parseInt(number_type, input_line, 10);
 }
 
 pub fn main() !void {
@@ -52,11 +52,19 @@ pub fn main() !void {
 
     const current_brightness = try std.fmt.parseInt(i32, currbuffer[0 .. currbuffer.len - 1], 10);
 
-    const user_input: i32 = try number_input(i32);
+    // get user input for brightness adjustment
+    var input_buffer: [1024]u8 = undefined;
+    var output_buffer: [1024]u8 = undefined;
+    var stdin = std.fs.File.stdin().reader(&input_buffer);
+    var stdout = std.fs.File.stdout().writer(&output_buffer);
 
-    std.debug.print("Max Brightness {d}\n", .{max_brightness});
-    std.debug.print("Current Brightness {d}\n", .{current_brightness});
-    std.debug.print("User Input {d}\n", .{user_input});
+    const user_input: i32 = try number_input(i32, input_buffer[0..], &stdin.interface, &stdout.interface);
+
+    try stdout.interface.print("Max Brightness {d}\n", .{max_brightness});
+    try stdout.interface.print("Current Brightness {d}\n", .{current_brightness});
+    try stdout.interface.print("User Input {d}\n", .{user_input});
+
+    try stdout.interface.flush();
 }
 
 test "simple test" {
