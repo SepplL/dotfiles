@@ -93,10 +93,16 @@ pub fn main() !void {
     );
     defer file.close();
 
-    std.debug.print("old brightness value: {d}\n", .{current_brightness});
-    std.debug.print("new brightness value: {d}\n", .{new_brightness});
-    // try stdout.file.writer(current_brightness_file);
-    // stdout.interface.flush();
+    // std.debug.print("old brightness value: {d}\n", .{current_brightness});
+    // std.debug.print("new brightness value: {d}\n", .{new_brightness});
+    const brightness_string = std.fmt.allocPrint(allocator, "{d}", .{new_brightness}) catch |err| {
+        std.debug.print("Error with memory allocation! {}\n", .{err});
+        return err;
+    };
+    defer allocator.free(brightness_string);
+
+    try file.writeAll(brightness_string);
+    try stdout.interface.flush();
 }
 
 /// This imports the separate module containing `root.zig`. Take a look in `build.zig` for details.
