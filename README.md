@@ -33,4 +33,7 @@ follows, if time allows for testing.
 - sort different settings and groups toggleable settings, e.g. river + dracula setup
 - re-structure directories based on packages/topics? -> less clutter but also more verbose
   than just a `.dotfiles`
+- Test font management and maybe better install process? Test working state on other
+systems
+- improve transparency and blur handling - especially radius
 

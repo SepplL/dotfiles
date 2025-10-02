@@ -20,7 +20,7 @@ return { "rose-pine/neovim",
       styles = {
         bold = true,
         italic = true,
-        transparency = false,
+        transparency = true,
       },
 
       groups = {
