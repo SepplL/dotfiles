@@ -54,8 +54,22 @@
         path: $HOME/.local/bin/brightnessChanger
       register: statusBR
 
+    - stat:
+        path: $HOME/.local/share/fonts/JetBrainsMonoNLNerdFontMono-Medium.ttf
+      register: JetBrainsNerdFont
+
+    - name: Install JetBrains Mono Nerd Font
+      shell: |
+        mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+        curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+        tar xvf JetBrainsMono.tar.xz
+        cd -
+      when: not JetBrainsNerdFont.stat.exists
+
     - name: Include building Brightness Changer from custom to ~/.local
+      # shell: "cd custom/brightnessChanger"
       include_tasks: ./custom/brightnessChanger/build.yml
+      # shell: "cd -"
       when: not statusBR.stat.exists
 
     - name: Run Stow  # to manage the dotfiles

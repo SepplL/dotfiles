@@ -9,8 +9,8 @@ palette = 12=#56949f
 
 selection-background = #dfdad9
 
-font-family = "JetBrains Mono"
-font-size = 12
+font-family = "JetBrainsMonoNerdFontMono"
+font-size = 13
 
 cursor-style-blink = false
 adjust-cell-height = 30%
@@ -23,7 +23,7 @@ window-height = 400
 window-width = 640
 window-theme = auto
 
-background-opacity = 0.8
-background-blur-radius = 20
+background-opacity = 0.85
+background-blur-radius = 50
 
 shell-integration = zsh
