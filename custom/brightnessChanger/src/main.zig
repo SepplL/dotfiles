@@ -69,12 +69,11 @@ pub fn main() !void {
     try stdout.interface.flush();
 
     // define minimal birghtness to prevent pitch black screen on accident
-    const minimal_brightness: i32 = 250;
+    const minimal_brightness: i32 = 150;
 
     // calculate percentage diff - user input is delta percent for brightness change
-    const max_percent: f32 = 100;
     const max_brightness_float: f32 = @floatFromInt(max_brightness);
-    const delta_brightness: f32 = @divExact(user_input, max_percent) * max_brightness_float;
+    const delta_brightness: f32 = @divExact(user_input, 100) * max_brightness_float;
 
     // check for constraints of max and min value
     const new_brightness_delta: i32 = @as(i32, @intFromFloat(delta_brightness));
