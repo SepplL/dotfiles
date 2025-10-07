@@ -98,8 +98,25 @@ riverctl set-repeat 50 300
 
 # Set the default layout generetor to be rivertile and start it
 # River will send the process group of the init executable SIGTERM on exit
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+# riverctl default-layout rivertile
+# rivertile -view-padding 6 -outer-padding 6 &
+
+# Launch riveroverflow
+riverctl spawn "riveroverflow"
+
+# Set the default layout
+riverctl default-layout riveroverflow
+
+# Configure the layout manager
+riverctl send-layout-cmd riveroverflow "main_count 2"
+riverctl send-layout-cmd riveroverflow "main_ratio 0.6"
+riverctl send-layout-cmd riveroverflow "view_padding 4"
+riverctl send-layout-cmd riveroverflow "outer_padding 4"
+riverctl send-layout-cmd riveroverflow "view_per_page 3"
+
+# Set up a few key binds
+riverctl map normal Super+Control J send-layout-cmd riveroverflow page_down
+riverctl map normal Super+Control K send-layout-cmd riveroverflow page_up
 
 # set input devices to correct settings
 # only works on thinkpad pointer currently. Other device needs adjustment ofc.

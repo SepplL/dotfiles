@@ -51,13 +51,17 @@
         state: present
       when: ansible_distribution == "openSUSE Tumbleweed"
 
-    - stat: 
+    - stat:
         path: $HOME/.local/bin/brightnessChanger
       register: statusBR
 
     - stat:
         path: $HOME/.local/share/fonts/JetBrainsMonoNLNerdFontMono-Medium.ttf
       register: JetBrainsNerdFont
+
+    - stat:
+        path: /usr/local/bin/riveroverflow
+      register: riveroverflow
 
     - name: Install JetBrains Mono Nerd Font
       shell: |
@@ -72,6 +76,14 @@
       include_tasks: ./custom/brightnessChanger/build.yml
       # shell: "cd -"
       when: not statusBR.stat.exists
+
+    - name: Build and install riveroverflow
+      shell: |
+        cd custom/riveroverflow
+        make
+        sudo make install
+        cd -
+      when: not riveroverflow.stat.exists
 
     - name: Run Stow  # to manage the dotfiles
       shell: "stow --target={{ ansible_env.HOME }} .dotfiles --verbose=2"
