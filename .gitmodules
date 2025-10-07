@@ -1,0 +1,3 @@
+[submodule "custom/riveroverflow"]
+	path = custom/riveroverflow
+	url = https://gitlab.com/akumar-xyz/riveroverflow.git

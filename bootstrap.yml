@@ -47,6 +47,7 @@
         - swaybar
         - ghostty
         - rofi
+        - niri
         state: present
       when: ansible_distribution == "openSUSE Tumbleweed"
 
