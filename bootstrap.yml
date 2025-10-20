@@ -23,6 +23,7 @@
         - swaybar
         - ghostty
         - rofi
+        - dunst
         state: present
       when: ansible_distribution == "Fedora"
 
@@ -42,6 +43,7 @@
         - stow
         - waybar
         - wlogout
+        - dunst
         - river
         - swaylock
         - swaybg

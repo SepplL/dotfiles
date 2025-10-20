@@ -1,6 +1,7 @@
 #!/bin/bash
 
-waybar -c ~/.config/waybar/config-mango >/dev/null 2>&1 &
+dunst >/dev/null 2>&1 &
+waybar -c ~/.config/waybar/config-mangowc.jsonc >/dev/null 2>&1 &
 
 swayidle -w \
 	timeout 300 'swaylock -i ~/wallpaper/blockwavedawn.png' \
@@ -10,6 +11,3 @@ swayidle -w \
 
 # swaybg
 [[ -e ~/wallpaper/dracula-soft-waves-44475a.png ]] && swaybg -m fill -i ~/wallpaper/leafy-dawn.png >/dev/null 2>&1 &
-
-dunst >/dev/null 2>&1 &
-

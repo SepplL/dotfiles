@@ -157,7 +157,7 @@ riverctl map rivertile Super E spawn "sudo ~/.local/bin/brightnessChanger"
 
 # set initial tasks and programs
 # waybar
-riverctl spawn "waybar -c ~/.config/waybar/config-river"
+riverctl spawn "waybar -c ~/.config/waybar/config-river.jsonc"
 riverctl spawn dunst
 
 # lock on closed lid
@@ -168,7 +168,7 @@ riverctl spawn "swayidle -w \
 	timeout 300 'swaylock -i ~/wallpaper/blockwavedawn.png' \
 	timeout 600 'dunstify output off' \
 	resume 'dunstify output resumed' \
-	before-sleep 'swaylock -i ~/wallpaper/blockwavedawn.png'	"
+	before-sleep 'swaylock -i ~/wallpaper/blockwavedawn.png'"
 
 # swaybg
 [[ -e ~/wallpaper/dracula-soft-waves-44475a.png ]] && riverctl spawn "swaybg -m fill -i ~/wallpaper/leafy-dawn.png"
