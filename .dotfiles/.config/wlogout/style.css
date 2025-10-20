@@ -1,0 +1,55 @@
+window {
+    font-family: "JetBrainsMonoNerdFontMono";
+    font-size: 14px;
+    font-weight: bold;
+    color: #575279;
+    background-color: #f8f0e7;
+}
+
+button {
+    border-color: #286983;
+    border-radius: 20px 20px 20px 20px;
+    border-width: 4px;
+    color: #575279;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    background-color: #56949f;
+    font-size: 40px;
+    text-shadow: none;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    margin-left: 60px;
+    margin-right: 60px;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+button:hover {
+    background-color: #ea9d34;
+    background-size: 35%;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+#lock {
+    background-image: image(url("./icons/lock.svg"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.svg"));
+}
+
+#suspend {
+    background-image: image(url("./icons/sleep.svg"));
+} 
+
+#shutdown {
+    background-image: image(url("./icons/power.svg"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.svg"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.svg"));
+}

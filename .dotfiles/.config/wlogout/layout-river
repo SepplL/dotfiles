@@ -1,0 +1,36 @@
+{
+    "label" : "logout",
+    "action" : "riverctl exit",
+    "text" : "Logout"
+    "keybind" : "m"
+}
+{
+    "label" : "lock",
+    "action" : "swaylock -i ~/wallpaper/blockwavedawn.png -f -c &",
+    "text" : "Lock"
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown"
+    "keybind" : "d"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot"
+    "keybind" : "r"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend"
+    "keybind" : "s"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate"
+    "keybind" : "h"
+}

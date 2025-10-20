@@ -41,6 +41,7 @@
         - zoxide
         - stow
         - waybar
+        - wlogout
         - river
         - swaylock
         - swaybg
@@ -48,6 +49,11 @@
         - ghostty
         - rofi
         - niri
+        - grim
+        - slurp
+        - xwayland-devel
+        - xwayland-run
+        - libxcb-errors0
         state: present
       when: ansible_distribution == "openSUSE Tumbleweed"
 
