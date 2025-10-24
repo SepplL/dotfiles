@@ -40,28 +40,28 @@ window#waybar {
 	padding: 0 10px;
 	background-color: @base;
 	color: @subtle;
-	box-shadow: inset -2px -3px 2px @foam;
+	box-shadow: inset -3px -5px 2px @foam;
 }
 #tags {
 	padding: 0 0px;
 	background-color: @base;
 	color: @text;
 	font-weight: bold;
-	box-shadow: inset 3px -3px 2px @foam;
+	box-shadow: inset 3px -5px 2px @foam;
 }
 #tags button.occupied {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
 	font-weight: bold;
-	box-shadow: inset 3px -3px 2px @gold;
+	box-shadow: inset 3px -5px 2px @gold;
 }
 #tags button.focused {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
 	font-weight: bold;
-	box-shadow: inset 3px -3px 2px @iris;
+	box-shadow: inset 3px -5px 2px @iris;
 }
 #mode {
 	padding: 0 10px;
@@ -72,20 +72,21 @@ window#waybar {
 	font-weight: bold;
 	background-color: @base;
 	color: @gold;
+	box-shadow: inset 0px -5px 2px @rose;
 }
 #workspaces.active {
 	padding: 0 5px;
 	font-weight: bold;
 	background-color: @base;
 	color: @gold;
-	box-shadow: inset 3px -3px 2px @gold;
+	box-shadow: inset 3px -5px 2px @gold;
 }
 #workspaces.urgent {
 	padding: 0 5px;
 	font-weight: bold;
 	background-color: @base;
 	color: @gold;
-	box-shadow: inset 3px -3px 2px @iris;
+	box-shadow: inset 3px -5px 2px @iris;
 }
 #window {
 	padding: 0 5px;
@@ -98,7 +99,7 @@ window#waybar {
 	font-weight: bold;
 	background-color: @base;
 	color: @gold;
-	box-shadow: inset 0 -3px 2px @iris;
+	box-shadow: inset 0 -5px 2px @iris;
 }
 #network {
 	padding: 0 10px;
@@ -108,36 +109,36 @@ window#waybar {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
-	box-shadow: inset 0px -3px 2px @gold;
+	box-shadow: inset 0px -5px 2px @gold;
 }
 #temperature {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
-	box-shadow: inset 0px -3px 2px @love;
+	box-shadow: inset 0px -5px 2px @love;
 }
 #memory {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
-	box-shadow: inset 0px -3px 2px @pine;
+	box-shadow: inset 0px -5px 2px @pine;
 }
 #cpu {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
-	box-shadow: inset 0px -3px 2px @iris;
+	box-shadow: inset 0px -5px 2px @iris;
 }
 #battery {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
-	box-shadow: inset 0px -3px 2px @foam;
+	box-shadow: inset 0px -5px 2px @foam;
 }
 #clock {
 	padding: 0 5px;
 	background-color: @base;
 	color: @text;
 	font-weight: bold;
-	box-shadow: inset 0px -3px 2px @rose;
+	box-shadow: inset 0px -5px 2px @rose;
 }
