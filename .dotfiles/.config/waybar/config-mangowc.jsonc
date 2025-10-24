@@ -1,6 +1,7 @@
 {
 	"layer": "top",
 	"position": "top",
+	// "mode": "dock",
 	"height": 25,
 	"exclusive": true,
 	"passthrough": false,
@@ -16,7 +17,7 @@
 	},
 	"ext/workspaces": {
 		"format": "{icon}",
-		"ignore-hidden": true,
+		"ignore-hidden": false,
 		// "active-only":true,
 		"on-click": "activate",
 		"on-click-right": "deactivate",
@@ -47,6 +48,7 @@
 	},
 	"network": {
 		"interface": "wlp0s20f3",
+		// "interface": "wlp131s0f0",
 		"format": "{ifname}",
 		// "format-wifi": "{essid} ({signalStrength}%) {ipaddr} / {cidr}",
 		"format-wifi": "{essid} ({signalStrength}%) - {bandwidthTotalBytes}",
