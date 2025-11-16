@@ -1,0 +1,23 @@
+- name: Install packages with dnf
+  become: yes
+  ansible.builtin.dnf:
+    name:
+    - git
+    - make
+    - curl
+    - zsh
+    - zig
+    - neovim
+    - fzf
+    - eza
+    - zoxide
+    - stow
+    - waybar
+    - river
+    - swaylock
+    - swaybg
+    - swaybar
+    - ghostty
+    - rofi
+    - dunst
+    state: present

@@ -1,0 +1,30 @@
+- name: Install packages with zypper
+  become: yes
+  community.general.zypper:
+    name:
+    - git
+    - make
+    - curl
+    - zsh
+    - zig
+    - neovim
+    - fzf
+    - eza
+    - zoxide
+    - stow
+    - waybar
+    - wlogout
+    - dunst
+    - river
+    - swaylock
+    - swaybg
+    - swaybar
+    - ghostty
+    - rofi
+    - niri
+    - grim
+    - slurp
+    - xwayland-devel
+    - xwayland-run
+    - libxcb-errors0
+    state: present
