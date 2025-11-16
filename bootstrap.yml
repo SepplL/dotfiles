@@ -4,15 +4,15 @@
   tasks:
     - name: Install packages with dnf
       include_tasks: ./packages/dnf.yml
-      when: ansible_distribution == "Fedora"
+      when: ansible_facts["distribution"] == "Fedora"
 
     - name: Install packages with zypper
       include_tasks: ./packages/zypper.yml
-      when: ansible_distribution == "openSUSE Tumbleweed"
+      when: ansible_facts["distribution"] == "openSUSE Tumbleweed"
 
     - name: Install packages with pacman
       include_tasks: ./packages/pacman.yml
-      when: ansible_distribution == "cachyOS"
+      when: ansible_facts["distribution"] == "Archlinux"
 
     - stat:
         path: $HOME/.local/bin/brightnessChanger

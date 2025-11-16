@@ -8,7 +8,6 @@
     - zsh
     - zig
     - neovim
-    - python3-neovim
     - fzf
     - eza
     - zoxide
@@ -19,13 +18,11 @@
     - river
     - swaylock
     - swaybg
-    - swaybar
     - ghostty
     - rofi
     - niri
     - grim
     - slurp
-    - xwayland-devel
-    - xwayland-run
-    - libxcb-errors0
+    - xorg-xwayland
+    - libxcb
     state: present
