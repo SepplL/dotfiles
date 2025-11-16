@@ -25,4 +25,6 @@
     - slurp
     - xorg-xwayland
     - libxcb
+    - tailscale
+    - ruby
     state: present

@@ -28,4 +28,6 @@
     - xwayland-devel
     - xwayland-run
     - libxcb-errors0
+    - tailscale
+    - ruby
     state: present
