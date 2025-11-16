@@ -41,9 +41,11 @@
       when: not JetBrainsNerdFont.stat.exists
 
     - name: Include building Brightness Changer from custom to ~/.local
-      # shell: "cd custom/brightnessChanger"
-      include_tasks: ./custom/brightnessChanger/build.yml
-      # shell: "cd -"
+      # include_tasks: ./custom/brightnessChanger/build.yml
+      shell: |
+        cd custom/brightnessChanger
+        zig build install -Doptimize=ReleaseFast -p ~/.local
+        cd -
       when: not statusBR.stat.exists
 
     - name: Build and install riveroverflow
