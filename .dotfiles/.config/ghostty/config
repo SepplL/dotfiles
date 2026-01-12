@@ -23,7 +23,7 @@ window-height = 400
 window-width = 640
 window-theme = auto
 
-background-opacity = 0.9
-background-blur-radius = 50
+background-opacity = 0.8
+background-blur = true
 
 shell-integration = zsh
