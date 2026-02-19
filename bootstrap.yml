@@ -15,8 +15,8 @@
       when: ansible_facts["distribution"] == "Archlinux"
 
     # Retrieved 2025-11-16, License - CC BY-SA 4.0
-    - name: Set login shell of user {{ ansible_env.USER }} to `/bin/zsh` with `usermod`
-      ansible.builtin.command: usermod --shell /bin/zsh {{ ansible_env.USER }}
+    - name: Set login shell of user {{ ansible_env['USER'] }} to `/bin/zsh` with `usermod`
+      ansible.builtin.command: usermod --shell /bin/zsh {{ ansible_env['USER'] }}
       become: true
       changed_when: false
 
@@ -57,6 +57,6 @@
       when: not riveroverflow.stat.exists
 
     - name: Run Stow  # to manage the dotfiles
-      shell: "stow --target={{ ansible_env.HOME }} .dotfiles --verbose=2"
+      shell: "stow --target={{ ansible_env['HOME'] }} .dotfiles --verbose=2"
       register: result
       changed_when: 'result.stderr is search("LINK: ")'
