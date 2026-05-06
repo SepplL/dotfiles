@@ -1,5 +1,9 @@
 -- Automatically install language servers to stdpath
-return { "williamboman/mason-lspconfig.nvim",
+return { "mason-org/mason-lspconfig.nvim",
+  dependencies = {
+    "mason-org/mason.nvim",
+    "neovim/nvim-lspconfig",
+  },
   config = function()
     require("mason-lspconfig.install").compilers = { "gcc" };
   end

@@ -1,5 +1,6 @@
 -- Manage external editor tooling i.e LSP servers
-return { "williamboman/mason.nvim",
+return { "mason-org/mason.nvim",
+  opts = {},
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

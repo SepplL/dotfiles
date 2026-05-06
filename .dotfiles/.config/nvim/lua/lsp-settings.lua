@@ -61,7 +61,8 @@ local servers = {
   'cmake',
   'grammarly',
   'marksman',
-  'ltex-ls',
+  'ltex-ls-plus',
+  'textlsp',
   'zls',
 }
 

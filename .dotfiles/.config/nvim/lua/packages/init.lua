@@ -16,8 +16,8 @@ return {
   { require("packages.treesitter") }, -- Highlight, edit, and navigate code
   { require("packages.treesitter-textobjects") }, -- Additional textobjects for treesitter
   -- potentially group similar packages later
-  { require("packages.lspconfig") }, -- Collection of configurations for built-in LSP client
   { require("packages.mason") }, -- Manage external editor tooling i.e LSP servers
+  { require("packages.lspconfig") }, -- Collection of configurations for built-in LSP client
   { require("packages.mason-lspconfig") }, -- Automatically install language servers to stdpath
   { require("packages.nvim-cmp") }, -- Autocompletion
 
